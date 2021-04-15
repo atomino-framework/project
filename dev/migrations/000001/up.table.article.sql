@@ -1,0 +1,22 @@
+CREATE TABLE `article` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `publishDate` datetime DEFAULT NULL,
+  `authorId` int unsigned NOT NULL,
+  `permalink` varchar(64) CHARACTER SET utf8 COLLATE utf8_hungarian_ci DEFAULT '',
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_hungarian_ci DEFAULT '',
+  `lead` varchar(2048) CHARACTER SET utf8 COLLATE utf8_hungarian_ci DEFAULT '',
+  `body` longtext CHARACTER SET utf8 COLLATE utf8_hungarian_ci,
+  `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `iconColor` varchar(7) CHARACTER SET utf8 COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `metaKeywords` varchar(100) CHARACTER SET utf8 COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `metaDescription` varchar(150) CHARACTER SET utf8 COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `guid` char(36) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL DEFAULT '' COMMENT 'guid',
+  `relatedIds` json DEFAULT NULL,
+  `attachments` json DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `permalink` (`permalink`),
+  KEY `authorId` (`authorId`),
+  KEY `status` (`status`),
+  FULLTEXT KEY `search` (`title`,`lead`)
+) ENGINE=InnoDB AUTO_INCREMENT=54842 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
