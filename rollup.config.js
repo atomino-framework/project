@@ -6,7 +6,9 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import {terser} from "rollup-plugin-terser";
 import globalCSS from 'svelte-preprocess-css-global';
-import typescript from '@rollup/plugin-typescript';
+//import typescript from '@rollup/plugin-typescript';
+import typescript from "rollup-plugin-typescript2";
+import scss from 'rollup-plugin-scss'
 
 let rollup = {
     verbump: function (filename) {
@@ -23,7 +25,8 @@ let rollup = {
             input,
             output: {sourcemap: true, format: 'iife', name: 'app', file: outPath + '/' + outJS},
             plugins: [
-                typescript({sourceMap: !production, target: "es6",tsconfig:false}),
+                typescript({check: false}),
+                //typescript({sourceMap: !production, target: "es6",tsconfig:false}),
                 rollup.verbump("app/var/version"),
                 svelte({
                     compilerOptions: {
@@ -32,6 +35,7 @@ let rollup = {
                     },
                     preprocess: preprocess({style: globalCSS})
                 }),
+                scss(),
                 css({output: outCSS}),
                 resolve(),
                 commonjs(),
@@ -44,6 +48,5 @@ let rollup = {
 const production = !process.env.ROLLUP_WATCH;
 
 export default [
-    rollup.compiler('dev/src/@Web/(frontend)/index.ts', 'app/public/~web', 'index.js', 'index.css', production),
-    rollup.compiler('dev/src/@Admin/(frontend)/index.ts', 'app/public/~admin', 'index.js', 'index.css', production)
+    rollup.compiler('dev/src/@Admin/(frontend)/index.ts', production ? 'dev/assets/~admin' : 'app/public/~admin', 'index.js', 'index.css', production)
 ];

@@ -15,6 +15,9 @@ use Atomino\Entity\Attributes\RequiredField;
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $image
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $head
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $file
+ * #[Immutable( 'guid', true )]
+ * #[Protect( 'guid', true, false )]
+ * #[RequiredField('guid', StringField::class)]
  * @method static \Atomino\Database\Finder\Comparison attachments($isin = null)
  * @method static \Atomino\Database\Finder\Comparison authorId($isin = null)
  * @method static \Atomino\Database\Finder\Comparison body($isin = null)
@@ -73,6 +76,7 @@ abstract class _Article extends Entity implements \Atomino\Molecules\Module\Atta
 	protected final function __getImage(){return $this->getAttachmentCollection("image");}
 	protected final function __getHead(){return $this->getAttachmentCollection("head");}
 	protected final function __getFile(){return $this->getAttachmentCollection("file");}
+	use \Atomino\Molecules\EntityPlugin\Guid\GuidTrait;
 	const attachments = 'attachments';
 	protected array $attachments = [];
 	const authorId = 'authorId';

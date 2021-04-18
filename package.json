@@ -6,25 +6,31 @@
     "dev": "rollup -c -w",
     "serve": "php -S 127.0.0.1:8080 dev/app.php",
     "atomino": "php dev/app.php",
-    "copy": "node build.js copy",
-    "font": "node build.js font"
+    "fontawesome": "node build.js fontawesome",
+    "assets": "node build.js assets",
+    "fonts": "node build.js fonts"
   },
   "type": "module",
   "dependencies": {
     "@composi/gestures": "^1.0.9",
+    "@fontsource/baloo-chettan-2": "^4.2.3",
+    "@fontsource/flavors": "^4.2.3",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@fortawesome/fontawesome-pro": "^5.15.2",
     "@ovh-ux/rollup-plugin-less-tilde-importer": "^1.0.5",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "@rollup/plugin-typescript": "3.1.1",
+    "@rollup/plugin-typescript": "^8.2.1",
     "@tsconfig/svelte": "^1.0.10",
     "balloon-css": "^1.2.0",
     "cbytes": "^1.0.2",
+    "copy-dir": "^1.3.0",
     "font-awesome-filetypes": "^2.1.0",
     "magic": "github:laborci/atomino-magic-ui",
+    "material-icons": "^0.6.1",
+    "node-sass": "^4.14.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-typescript2": "^0.30.0",
@@ -35,6 +41,7 @@
     "svelte-fa": "^2.2.0",
     "svelte-jsoneditor": "^0.0.15",
     "svelte-loader": "^3.0.0",
+    "svelte-material-icons": "^1.0.3",
     "svelte-portal": "^2.1.1",
     "svelte-preprocess": "4.6.9",
     "svelte-preprocess-css-global": "^0.0.1",
@@ -47,5 +54,8 @@
       "pattern": "*",
       "dest": "/Users/elvis/Work/composer/atomino"
     }
+  },
+  "devDependencies": {
+    "rollup-plugin-scss": "^2.6.1"
   }
 }

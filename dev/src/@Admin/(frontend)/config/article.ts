@@ -14,8 +14,8 @@ let articleList: List = List.create(
 	'Articles',
 	"fad fa-newspaper",
 	[
-		ListConfig.Action("fas fa-recycle", null, list => list.reload()),
-		ListConfig.Action("fas fa-plus", null, list => articleForm.open(null))
+		ListConfig.Action("fas fa-recycle", '', list => list.reload()),
+		ListConfig.Action("fas fa-plus", '', list => articleForm.open(null))
 	],
 	100,
 	[
@@ -23,7 +23,7 @@ let articleList: List = List.create(
 	],
 	new ListFetcher('/magic/article'),
 	ListCard.Component,
-	(item) => ListCard.Cardify(
+	(item:any) => ListCard.Cardify(
 		item.id,
 		() => articleForm.open(item.id),
 		item.title,
@@ -51,7 +51,7 @@ let articleForm: typeof MagicForm.Doc = MagicForm.create(
 	"fad fa-newspaper",
 	new MagicForm.Fetcher('/magic/article'),
 	[
-		new FormAction('fad fa-folder-open', 'attachments', (doc: FormDoc) => modalManager.show(
+		new FormAction('far fa-folder-open', 'attachments', (doc: FormDoc) => modalManager.show(
 			AttachmentModal,
 			{
 				doc,
@@ -63,10 +63,10 @@ let articleForm: typeof MagicForm.Doc = MagicForm.create(
 			}),
 			(doc: FormDoc) => doc.exists
 		),
-		new FormAction('fad fa-save', 'save', (doc: FormDoc) => doc.save()),
+		new FormAction('far fa-save', 'save', (doc: FormDoc) => doc.save()),
 		new FormAction('fas fa-times', 'delete', (doc: FormDoc) => doc.delete(), (doc: FormDoc) => doc.exists)
 	],
-	(item: Object) => item['title'] ?? 'új cikk',
+	(item: any) => item.title ?? 'új cikk',
 );
 
 articleForm.addSection('Adatok', false).add(

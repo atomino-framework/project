@@ -19,6 +19,7 @@ class HttpRunner extends Router {
 		}
 
 		ImageServer::route($this);
+
 		$this(host: 'admin.**')?->pass(Admin\Router::class);
 		$this(host: 'www.**')?->pass(Web\Router::class);
 		$this(host: 'api.**')?->pass(Api\Router::class);
