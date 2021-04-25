@@ -1,0 +1,20 @@
+@import "@fontsource/baloo-chettan-2/scss/mixins";
+@include fontFace($fontDir: "/~fonts/"+$fontId, $weight:400);
+@include fontFace($fontDir: "/~fonts/"+$fontId, $weight:500);
+@include fontFace($fontDir: "/~fonts/"+$fontId, $weight:600);
+@include fontFace($fontDir: "/~fonts/"+$fontId, $weight:700);
+@include fontFace($fontDir: "/~fonts/"+$fontId, $weight:800);
+@import "./vars";
+
+*{
+	box-sizing: border-box;
+	outline: 0;
+	font-family: $font-face;
+}
+html, body{
+	margin: 0;
+	height: 100%;
+}
+body{
+	background-color: $color-ramp-dark;
+}

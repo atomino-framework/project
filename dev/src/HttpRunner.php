@@ -1,28 +1,37 @@
 <?php namespace Application;
 
-use Atomino\Molecules\Module\Attachment\AttachmentServer;
-use Atomino\Molecules\Module\Attachment\Img\ImageServer;
-use Atomino\Molecules\Responder\FileServer\StaticServer;
-use Atomino\Responder\Error;
-use Atomino\Routing\Router;
+use Atomino\Core\Runner\HttpRunnerInterface;
+use Atomino\Molecules\Module\Attachment\Server\AttachmentServer;
+use Atomino\Molecules\Module\Attachment\Server\ImgServer;
+use Atomino\RequestPipeline\FileServer\StaticServer;
+use Atomino\RequestPipeline\Middleware\Emitter;
+use Atomino\RequestPipeline\Pipeline\Pipeline;
+use Atomino\RequestPipeline\Router\Router;
+use Symfony\Component\HttpFoundation\Request;
+use function Atomino\dic;
 use function Atomino\path;
 
-class HttpRunner extends Router {
+class HttpRunner implements HttpRunnerInterface {
 
 	public function run(): void {
 
-		if(!str_starts_with($this->getRequest()->server->get("SERVER_SOFTWARE", "other"), "Apache/")){
-			AttachmentServer::route($this);
-			StaticServer::route($this, '/~web/**', path('/app/public/~web'));
-			StaticServer::route($this, '/~admin/**', path('/app/public/~admin'));
-			StaticServer::route($this, '/~favicon/**', path('/app/public/~favicon'));
-		}
+		$request = dic()->get(Request::class);
 
-		ImageServer::route($this);
+		$router = Router::create(function (Router $router) use ($request) {
+			if(!str_starts_with($request->server->get("SERVER_SOFTWARE", "other"), "Apache/")){
+				AttachmentServer::route($router);
+				StaticServer::route($router, '/~web/**', path('/app/public/~web'));
+				StaticServer::route($router, '/~admin/**', path('/app/public/~admin'));
+				StaticServer::route($router, '/~favicon/**', path('/app/public/~favicon'));
+			}
+			ImgServer::route($router);
+			$router(host: 'admin.**')?->pipe(Admin\Router::class);
+		});
 
-		$this(host: 'admin.**')?->pass(Admin\Router::class);
-		$this(host: 'www.**')?->pass(Web\Router::class);
-		$this(host: 'api.**')?->pass(Api\Router::class);
-		$this()->exec(Error::setup(404));
+		(new Pipeline())
+			->pipe(Emitter::class)
+			->pipe($router)
+			->execute($request)
+		;
 	}
 }

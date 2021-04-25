@@ -2,9 +2,9 @@
 
 use Application\Entity\User;
 use Atomino\Molecules\Module\Authenticator\SessionAuthenticator;
-use Atomino\Molecules\Responder\Api\Api;
-use Atomino\Molecules\Responder\Api\Attributes\Auth;
-use Atomino\Molecules\Responder\Api\Attributes\Route;
+use Atomino\RequestPipeline\Responder\Api\Api;
+use Atomino\RequestPipeline\Responder\Api\Attributes\Auth;
+use Atomino\RequestPipeline\Responder\Api\Attributes\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthApi extends Api{
@@ -19,10 +19,10 @@ class AuthApi extends Api{
 	#[Route( self::POST, '/login' )]
 	#[Auth( false )]
 	public function login(){
-		$login = $this->getDataBag()->get('login');
-		$password = $this->getDataBag()->get('password');
+		$login = $this->data->get('login');
+		$password = $this->data->get('password');
 		if (!$this->authenticator->login($login, $password)){
-			$this->getResponse()->setStatusCode(Response::HTTP_UNAUTHORIZED);
+			$this->setStatusCode(Response::HTTP_UNAUTHORIZED);
 			return false;
 		}
 		return true;

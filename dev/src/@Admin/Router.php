@@ -1,21 +1,18 @@
 <?php namespace Application\Admin;
 
-use Atomino\Core\Application;
 use Atomino\Molecules\Module\Authenticator\SessionAuthenticator;
-use Atomino\Molecules\Responder\SmartResponder\Cache\Middleware\Cache;
 use function Atomino\dic;
 
-class Router extends \Atomino\Routing\Router{
+class Router extends \Atomino\RequestPipeline\Router\Router {
 
-	public function run():void{
+	public function route(): void {
 		dic()->get(SessionAuthenticator::class);
-		$this(method: 'GET', path: '/')?->pipe(Cache::class)->exec(Page\Index::class);
-		$this(path: 'api/auth/**')?->exec(Api\AuthApi::class);
-		$this(path: 'api/article-selector/**')?->exec(Api\ArticleSelector::class);
-		$this(path: 'api/user-selector/**')?->exec(Api\UserSelector::class);
-		$this(path: 'magic/article/**')?->exec(Magic\ArticleMagic::class);
-		$this(path: 'magic/user/**')?->exec(Magic\UserMagic::class);
-
+		$this(method: 'GET', path: '/')?->pipe(Page\Index::class);
+		$this(path: 'api/auth/**')?->pipe(Api\AuthApi::class);
+		$this(path: 'api/article-selector/**')?->pipe(Api\ArticleSelector::class);
+		$this(path: 'api/user-selector/**')?->pipe(Api\UserSelector::class);
+		$this(path: 'magic/article/**')?->pipe(Magic\ArticleMagic::class);
+		$this(path: 'magic/user/**')?->pipe(Magic\UserMagic::class);
 	}
 
 }

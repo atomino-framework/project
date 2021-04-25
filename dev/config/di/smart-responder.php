@@ -1,6 +1,6 @@
 <?php
 
-use Atomino\Molecules\Responder\SmartResponder\SmartResponderEnv;
+use Atomino\RequestPipeline\Responder\Smart\SmartResponderEnv;
 use function Atomino\cfg;
 use function DI\factory;
 

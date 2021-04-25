@@ -57,7 +57,7 @@ let articleForm: typeof MagicForm.Doc = MagicForm.create(
 				doc,
 				categories: [
 					{name: 'image', label: 'kép'},
-					{name: 'avatar', label: 'avatár'},
+					{name: 'head', label: 'avatár'},
 					{name: 'file', label: 'letöltés'}
 				]
 			}),

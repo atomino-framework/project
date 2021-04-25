@@ -1,6 +1,5 @@
 <?php namespace Application\Admin\Api;
 
-use Application\Entity\Article;
 use Application\Entity\User;
 use Atomino\Database\Finder\Filter;
 use Atomino\Entity\Entity;

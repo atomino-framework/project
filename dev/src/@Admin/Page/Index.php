@@ -1,8 +1,7 @@
 <?php namespace Application\Admin\Page;
 
-use Application\Entity\User;
-use Atomino\Molecules\Responder\SmartResponder\SmartResponder;
-use Atomino\Molecules\Responder\SmartResponder\Attributes\{Cache, Args, CSS, JS, Init};
+use Atomino\RequestPipeline\Responder\Smart\SmartResponder;
+use Atomino\RequestPipeline\Responder\Smart\Attributes\{Cache, Args, CSS, JS, Init};
 use Symfony\Component\HttpFoundation\Response;
 
 
