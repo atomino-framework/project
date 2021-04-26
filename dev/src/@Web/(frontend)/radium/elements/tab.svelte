@@ -7,9 +7,8 @@
 	import Button from "./button.svelte";
 </script>
 
-<main class:selected>
+<main class:selected on:click>
 	<section>
-
 		<Ticket icon={icon} hilited={selected} maxWidth="140">
 			<slot/>
 			<span slot="detail"><slot name="detail"/></span>

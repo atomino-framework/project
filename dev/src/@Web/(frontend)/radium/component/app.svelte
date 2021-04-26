@@ -5,13 +5,14 @@
 	import Account from "./section-account.svelte"
 	import ListHead from "./section-list-head.svelte"
 	import TabBar from "./section-tab-bar.svelte";
+	import Nav from "./section-nav.svelte";
 </script>
 
 <main>
 	<section class="account head"><Account/></section>
 	<section class="list-head head"><ListHead/></section>
 	<section class="tab-bar head"><TabBar showVerticalTabs/></section>
-	<section class="nav"></section>
+	<section class="nav"><Nav/></section>
 	<section class="list"></section>
 	<section class="doc">
 		<Controls>

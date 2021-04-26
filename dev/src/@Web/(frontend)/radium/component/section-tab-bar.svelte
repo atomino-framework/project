@@ -37,6 +37,10 @@
 		console.log("show menu")
 	}
 
+	function tabselect(event){
+		console.log(event)
+	}
+
 </script>
 
 <main>
@@ -46,7 +50,7 @@
 		</div>
 	{/if}
 	{#each tabs as tab}
-		<Tab selected={tab.selected === true} icon={tab.icon}>{tab.label}<span slot="detail">{@html tab.detail}</span></Tab>
+		<Tab on:click={tabselect} selected={tab.selected === true} icon={tab.icon}>{tab.label}<span slot="detail">{@html tab.detail}</span></Tab>
 	{/each}
 </main>
 
