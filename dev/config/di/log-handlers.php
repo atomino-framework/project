@@ -7,6 +7,7 @@ use function DI\factory;
 
 class_alias(HandlerInterface::class, \Application\SqlLogHandler::class);
 class_alias(HandlerInterface::class, \Application\ErrorHandlerMiddlewareLogHandler::class);
+class_alias(HandlerInterface::class, \Application\ExceptionHandlerMiddlewareLogHandler::class);
 
 
 return [

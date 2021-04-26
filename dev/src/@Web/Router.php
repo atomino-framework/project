@@ -1,22 +1,17 @@
 <?php namespace Application\Web;
 
-use Atomino\Core\Application;
 use Atomino\Molecules\Module\Authenticator\SessionAuthenticator;
-use Atomino\Molecules\Responder\SmartResponder\Cache\Middleware\Cache;
-use function Atomino\dic;
+use Atomino\RequestPipeline\Responder\Smart\Cache\Middleware\Cache;
 
-class Router extends \Atomino\Routing\Router{
+class Router extends \Atomino\RequestPipeline\Router\Router {
 
-	public function run():void{
+	public function __construct(protected SessionAuthenticator $authenticator) { }
 
-
-		dic()->get(SessionAuthenticator::class);
-		$this(method: 'GET', path: '/')?->pipe(Cache::class)->exec(Page\Index::class);
-		$this(path: 'api/auth/**')?->exec(Api\AuthApi::class);
-
-		$this(path: 'api/article-selector/**')?->exec(Api\ArticleSelector::class);
-		$this(path: 'magic/article/**')?->exec(Magic\ArticleMagic::class);
-
+	public function route():void{
+		$this(method: 'GET', path: '/')?->pipe(Cache::class)->pipe(Page\Index::class);
+		$this(path: 'api/auth/**')?->pipe(Api\AuthApi::class);
+		$this(path: 'api/article-selector/**')?->pipe(Api\ArticleSelector::class);
+		$this(path: 'magic/article/**')?->pipe(Magic\ArticleMagic::class);
 	}
 
 }

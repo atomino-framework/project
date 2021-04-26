@@ -26,6 +26,7 @@ class HttpRunner implements HttpRunnerInterface {
 			}
 			ImgServer::route($router);
 			$router(host: 'admin.**')?->pipe(Admin\Router::class);
+			$router(host: 'www.**')?->pipe(Web\Router::class);
 		});
 
 		(new Pipeline())
