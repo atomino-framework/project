@@ -3,13 +3,12 @@
 use Application\Entity\Article;
 use Application\Entity\User;
 use Atomino\Entity\Entity;
+use Atomino\Molecules\Magic\Attributes\Magic;
 use Atomino\Molecules\Magic\MagicApi;
 use Atomino\Database\Finder\Filter;
 
-
+#[Magic(User::class)]
 class UserMagic extends MagicApi {
-
-	protected function getEntity(): string { return User::class; }
 
 	protected function quickSearch(string $quickSearch): Filter {
 		return Filter::where(User::name()->like('%' . $quickSearch . '%'))->or(User::id($quickSearch));

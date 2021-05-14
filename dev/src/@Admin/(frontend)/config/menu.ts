@@ -4,8 +4,8 @@ import {userList} from "./user";
 
 let menu = [
 
-    MenuItem.List("Articles", "fad fa-newspaper", articleList).activate(),
-    MenuItem.List("Users", "fad fa-users", userList),
+    MenuItem.List("Articles", "far fa-newspaper", articleList).activate(),
+    MenuItem.List("Users", "fas fa-users", userList),
 
     /*MenuItem.Page("Books", "fad fa-users", articleForm, 54437).activate(),
     MenuItem.Menu("Második menüpont", "fad fa-crow", [

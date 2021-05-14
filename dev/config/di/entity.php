@@ -21,4 +21,5 @@ return [
 		cfg("attachment-entity-plugin.img.jpeg-quality"),
 	)),
 	"entity-generator"         => factory(fn() => ["namespace" => cfg("entity-generator.namespace")]),
+	"magic"                    => factory(fn() => ["entity-namespace" => cfg("entity-generator.namespace"), "api-namespace" => cfg("magic.api-namespace"), "descriptor-path" => cfg("magic.descriptor-path")]),
 ];

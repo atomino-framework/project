@@ -1,31 +1,19 @@
-import ListConfig from "magic/src/components/list/list-config";
+import ListConfig, {ListAction} from "magic/src/components/list/list-config";
 import ListCard from "magic/src/components/list/list-card";
-import ListFetcher from "magic/src/components/list/list-fetcher";
 import List from "magic/src/components/list/list";
 import MagicForm from "magic/src/magic-form";
-import FormAction from "magic/src/components/document/form/action";
-import type FormDoc from "magic/src/components/document/form/doc";
-import AttachmentModal from "magic/src/components/document/attachment/attachment-modal.svelte";
-import modalManager from "magic/src/elements/modal-manager";
 import {userForm} from "./user";
+import actions from "magic/src/modules/standard-actions";
+import articleModel from "../descriptor/article-model";
 
+let list: List;
+let form: typeof MagicForm.Doc;
+let fields = articleModel.fields;
 
-let articleList: List = List.create(
-	'Articles',
-	"fad fa-newspaper",
-	[
-		ListConfig.Action("fas fa-recycle", '', list => list.reload()),
-		ListConfig.Action("fas fa-plus", '', list => articleForm.open(null))
-	],
-	100,
-	[
-		ListConfig.Sorting('publikálva', true).asc('publishDate'),
-	],
-	new ListFetcher('/magic/article'),
-	ListCard.Component,
-	(item:any) => ListCard.Cardify(
+let cardify: Function = (item: any) => {
+	return ListCard.Cardify(
 		item.id,
-		() => articleForm.open(item.id),
+		() => form.open(item.id),
 		item.title,
 		item.publishDate !== null,
 		"https://picsum.photos/380/120" + "?" + Math.random(),
@@ -40,53 +28,53 @@ let articleList: List = List.create(
 		],
 		[
 			ListCard.Action("fas fa-plus", "büff", list => list.reload()),
-			ListCard.Action("fas fa-minus", "baff", list => console.log(item.title))
+			ListCard.Action("fas fa-plus", "baff", list => console.log(item.title))
 		]
-	)
+	);
+};
+
+list = List.create(
+	"Articles",
+	"far fa-newspaper",
+	100,
+	[ListConfig.Sorting('publikálva', true).asc('publishDate'),],
+	'/magic/article',
+	{component: ListCard.Component, cardify}
 );
 
-let articleForm: typeof MagicForm.Doc = MagicForm.create(
+form = MagicForm.create(
+	list,
 	"article",
-	articleList,
-	"fad fa-newspaper",
-	new MagicForm.Fetcher('/magic/article'),
-	[
-		new FormAction('far fa-folder-open', 'attachments', (doc: FormDoc) => modalManager.show(
-			AttachmentModal,
-			{
-				doc,
-				categories: [
-					{name: 'image', label: 'kép'},
-					{name: 'head', label: 'avatár'},
-					{name: 'file', label: 'letöltés'}
-				]
-			}),
-			(doc: FormDoc) => doc.exists
-		),
-		new FormAction('far fa-save', 'save', (doc: FormDoc) => doc.save()),
-		new FormAction('fas fa-times', 'delete', (doc: FormDoc) => doc.delete(), (doc: FormDoc) => doc.exists)
-	],
+	"far fa-newspaper",
+	'/magic/article',
 	(item: any) => item.title ?? 'új cikk',
 );
 
-articleForm.addSection('Adatok', false).add(
-	MagicForm.inputs.string('title', 'cím'),
-	MagicForm.inputs.checkbox('status'),
-	MagicForm.inputs.datetime('publishDate'),
-	MagicForm.inputs.selector('authorId').api('/api/user-selector').form(userForm),
-	MagicForm.inputs.color('iconColor'),
-	MagicForm.inputs.string('icon'),
+list.addAction(actions.list.reload(list));
+list.addAction(actions.list.add(form));
+
+form.addAction(actions.form.attachment(articleModel.collections));
+form.addAction(actions.form.save());
+form.addAction(actions.form.delete());
+
+form.addSection('Adatok', false).add(
+	MagicForm.inputs.string(fields.title),
+	MagicForm.inputs.checkbox(fields.status),
+	MagicForm.inputs.datetime(fields.publishDate),
+	MagicForm.inputs.selector(fields.authorId).api('/magic/user-selector').form(userForm),
+	MagicForm.inputs.color(fields.iconColor),
+	MagicForm.inputs.string(fields.icon),
 );
-articleForm.addSection('Meta', false).add(
-	MagicForm.inputs.string('permalink'),
-	MagicForm.inputs.string('metaKeywords'),
-	MagicForm.inputs.text('metaDescription'),
-	MagicForm.inputs.selector('relatedIds').api('/api/article-selector').multi.form(articleForm),
+form.addSection('Meta', false).add(
+	MagicForm.inputs.string(fields.permalink),
+	MagicForm.inputs.string(fields.metaKeywords),
+	MagicForm.inputs.text(fields.metaDescription),
+	MagicForm.inputs.selector(fields.relatedIds).api('/magic/article-selector').multi.form(form),
 )
-articleForm.addSection('Content', true).add(
-	MagicForm.inputs.text('lead').code.wide,
-	MagicForm.inputs.text('body').code.wide,
+form.addSection('Content', true).add(
+	MagicForm.inputs.text(fields.lead).code.wide,
+	MagicForm.inputs.text(fields.body).code.wide,
 )
 
 
-export {articleList, articleForm};
+export {list as articleList, form as articleForm};

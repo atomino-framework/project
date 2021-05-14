@@ -7,7 +7,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import {terser} from "rollup-plugin-terser";
 import globalCSS from 'svelte-preprocess-css-global';
 import typescript from "rollup-plugin-typescript2";
-import scss from 'rollup-plugin-scss'
+import scss from 'rollup-plugin-scss';
+//import postcss from 'rollup-plugin-postcss';
+import json from "@rollup/plugin-json";
 
 let rollup = {
 	verbump: function (filename) {
@@ -39,6 +41,10 @@ let rollup = {
 				commonjs(),
 				scss(),
 				css({output: outCSS}),
+				json(),
+				// postcss({
+				// 	plugins: []
+				// }),
 				production && terser()
 			]
 		}
@@ -47,7 +53,8 @@ let rollup = {
 
 const production = !process.env.ROLLUP_WATCH;
 
+
 export default [
 	rollup.compiler('dev/src/@Admin/(frontend)/index.ts', production ? 'dev/assets/~admin' : 'app/public/~admin', 'index.js', 'index.css', production),
-	rollup.compiler('dev/src/@Web/(frontend)/index.ts', production ? 'dev/assets/~admin' : 'app/public/~web', 'index.js', 'index.css', production)
+	//rollup.compiler('dev/src/@Web/(frontend)/index.ts', production ? 'dev/assets/~admin' : 'app/public/~web', 'index.js', 'index.css', production)
 ];

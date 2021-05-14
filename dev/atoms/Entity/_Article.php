@@ -11,17 +11,15 @@ use Atomino\Entity\Attributes\RequiredField;
 
 
 /**
- * @method static \Atomino\Atoms\EntityFinder\_User search( Filter $filter = null )
+ * @method static \Atomino\Atoms\EntityFinder\_Article search( Filter $filter = null )
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $image
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $head
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $file
- * #[Immutable( 'guid', true )]
- * #[Protect( 'guid', true, false )]
- * #[RequiredField('guid', StringField::class)]
  * @method static \Atomino\Database\Finder\Comparison attachments($isin = null)
  * @method static \Atomino\Database\Finder\Comparison authorId($isin = null)
  * @method static \Atomino\Database\Finder\Comparison body($isin = null)
  * @method static \Atomino\Database\Finder\Comparison guid($isin = null)
+ * @property-read string|null $guid
  * @method static \Atomino\Database\Finder\Comparison icon($isin = null)
  * @method static \Atomino\Database\Finder\Comparison iconColor($isin = null)
  * @method static \Atomino\Database\Finder\Comparison id($isin = null)
@@ -40,6 +38,9 @@ use Atomino\Entity\Attributes\RequiredField;
 #[Immutable( 'attachments', true )]
 #[Protect( 'attachments', false, false )]
 #[RequiredField( 'attachments', \Atomino\Entity\Field\JsonField::class )]
+#[Immutable( 'guid', true )]
+#[Protect( 'guid', true, false )]
+#[RequiredField('guid', \Atomino\Entity\Field\StringField::class)]
 #[Field("attachments", \Atomino\Entity\Field\JsonField::class)]
 #[Validator("authorId", \Symfony\Component\Validator\Constraints\NotNull::class)]
 #[Validator("authorId", \Symfony\Component\Validator\Constraints\PositiveOrZero::class)]
@@ -84,7 +85,8 @@ abstract class _Article extends Entity implements \Atomino\Molecules\Module\Atta
 	const body = 'body';
 	public string|null $body = null;
 	const guid = 'guid';
-	public string|null $guid = null;
+	protected string|null $guid = null;
+	protected function getGuid():string|null{ return $this->guid;}
 	const icon = 'icon';
 	public string|null $icon = null;
 	const iconColor = 'iconColor';

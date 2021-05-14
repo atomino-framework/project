@@ -10,6 +10,8 @@ import {userList} from "./config/user";
 
 
 
+
+
 window.addEventListener('load', ()=>{
 	//gestures();
 	settings.update(settings=>({
