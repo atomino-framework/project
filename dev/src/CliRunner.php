@@ -1,5 +1,6 @@
 <?php namespace Application;
 
+use Application\Entity\Article;
 use Application\Entity\User;
 use Atomino\Cli\Attributes\Command;
 use Atomino\Cli\CliCommand;
@@ -24,7 +25,9 @@ class Test extends CliModule {
 	public function test(): CliCommand {
 		return (new class() extends CliCommand {
 			protected function exec(mixed $config) {
-				$file = User::pick(1)->avatar->first->path;
+				$article = Article::pick(2);
+				print_r($article->isCommentModerator()?1:0);
+				$article->addComment('Hello');
 			}
 		});
 	}

@@ -7,7 +7,7 @@ use Atomino\Molecules\Magic\MagicApi;
 use Atomino\Database\Finder\Filter;
 
 #[Magic(Article::class)]
-class ArticleMagic extends MagicApi {
+class ArticleMagic extends MagicApi{
 
 	protected function quickSearch(string $quickSearch): Filter { return parent::quickSearch($quickSearch); }
 	protected function getSort(string $sort): array { return parent::getSort($sort); }
