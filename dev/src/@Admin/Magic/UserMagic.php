@@ -1,6 +1,5 @@
 <?php namespace Application\Admin\Magic;
 
-use Application\Entity\Article;
 use Application\Entity\User;
 use Atomino\Entity\Entity;
 use Atomino\Molecules\Magic\Attributes\Magic;
@@ -24,7 +23,7 @@ class UserMagic extends MagicApi {
 	 * @param $data
 	 */
 	protected function postprocess(Entity $item, $data) {
-		if($data['setpassword']) $item->setPassword($data['setpassword']);
+		if(array_key_exists('setpassword', $data ) && $data['setpassword']) $item->setPassword($data['setpassword']);
 	}
 
 }

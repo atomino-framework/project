@@ -86,7 +86,7 @@
         },
         "title": {
             "field": "title",
-            "label": "cym",
+            "label": "ez a címe baszod!",
             "type": "StringField",
             "readonly": false
         }

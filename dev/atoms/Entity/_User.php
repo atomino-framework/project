@@ -27,6 +27,7 @@ use Atomino\Entity\Attributes\RequiredField;
  * @method static \Atomino\Database\Finder\Comparison password($isin = null)
  * @property-read string|null $password
  * @method static \Atomino\Database\Finder\Comparison updated($isin = null)
+ * @property-read \DateTime|null $updated
  */
 #[RequiredField('id', \Atomino\Entity\Field\IntField::class)]
 #[Immutable( 'guid', true )]
@@ -35,6 +36,8 @@ use Atomino\Entity\Attributes\RequiredField;
 #[Immutable("created", true)]
 #[Protect("created", true, false)]
 #[RequiredField("created", \Atomino\Entity\Field\DateTimeField::class)]
+#[Protect("updated", true, false)]
+#[RequiredField("updated", \Atomino\Entity\Field\DateTimeField::class)]
 #[Immutable( 'attachments', true )]
 #[Protect( 'attachments', false, false )]
 #[RequiredField( 'attachments', \Atomino\Entity\Field\JsonField::class )]
@@ -61,6 +64,7 @@ abstract class _User extends Entity implements \Atomino\Molecules\Module\Attachm
 	static null|Model $model = null;
 	use \Atomino\Molecules\EntityPlugin\Guid\GuidTrait;
 	use \Atomino\Molecules\EntityPlugin\Created\CreatedTrait;
+	use \Atomino\Molecules\EntityPlugin\Updated\UpdatedTrait;
 	use \Atomino\Molecules\EntityPlugin\Attachmentable\AttachmentableTrait;
 	protected final function __getAvatar(){return $this->getAttachmentCollection("avatar");}
 	use \Atomino\Molecules\EntityPlugin\Authenticable\AuthenticableTrait;
@@ -94,7 +98,8 @@ abstract class _User extends Entity implements \Atomino\Molecules\Module\Attachm
 	protected string|null $password = null;
 	protected function getPassword():string|null{ return $this->password;}
 	const updated = 'updated';
-	public \DateTime|null $updated = null;
+	protected \DateTime|null $updated = null;
+	protected function getUpdated():\DateTime|null{ return $this->updated;}
 }
 
 

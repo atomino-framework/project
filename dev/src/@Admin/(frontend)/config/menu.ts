@@ -1,11 +1,13 @@
 import MenuItem from "magic/src/modules/menu-item";
 import {articleList} from "./article";
 import {userList} from "./user";
+import {productList} from "./product";
 
 let menu = [
 
     MenuItem.List("Articles", "far fa-newspaper", articleList).activate(),
     MenuItem.List("Users", "fas fa-users", userList),
+    MenuItem.List("Products", "fas fa-users", productList),
 
     /*MenuItem.Page("Books", "fad fa-users", articleForm, 54437).activate(),
     MenuItem.Menu("Második menüpont", "fad fa-crow", [
