@@ -17,6 +17,7 @@ class Router extends \Atomino\RequestPipeline\Router\Router {
 		$this(path: 'magic/article/**')?->pipe(Magic\ArticleMagic::class);
 		$this(path: 'magic/user/**')?->pipe(Magic\UserMagic::class);
 		$this(path: 'magic/product/**')?->pipe(Magic\ProductMagic::class);
+		$this(path: 'magic/podcast/**')?->pipe(Magic\PodcastMagic::class);
 	}
 
 }

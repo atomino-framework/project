@@ -12,6 +12,9 @@ use Atomino\Entity\Attributes\RequiredField;
 
 /**
  * @method static \Atomino\Atoms\EntityFinder\_User search( Filter $filter = null )
+ * #[Immutable( 'guid', true )]
+ * #[Protect( 'guid', true, false )]
+ * #[RequiredField('guid', StringField::class)]
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $avatar
  * @method static \Atomino\Database\Finder\Comparison attachments($isin = null)
  * @method static \Atomino\Database\Finder\Comparison created($isin = null)
@@ -19,7 +22,6 @@ use Atomino\Entity\Attributes\RequiredField;
  * @method static \Atomino\Database\Finder\Comparison email($isin = null)
  * @method static \Atomino\Database\Finder\Comparison group($isin = null)
  * @method static \Atomino\Database\Finder\Comparison guid($isin = null)
- * @property-read string|null $guid
  * @method static \Atomino\Database\Finder\Comparison id($isin = null)
  * @property-read int|null $id
  * @method static \Atomino\Database\Finder\Comparison name($isin = null)
@@ -30,9 +32,6 @@ use Atomino\Entity\Attributes\RequiredField;
  * @property-read \DateTime|null $updated
  */
 #[RequiredField('id', \Atomino\Entity\Field\IntField::class)]
-#[Immutable( 'guid', true )]
-#[Protect( 'guid', true, false )]
-#[RequiredField('guid', \Atomino\Entity\Field\StringField::class)]
 #[Immutable("created", true)]
 #[Protect("created", true, false)]
 #[RequiredField("created", \Atomino\Entity\Field\DateTimeField::class)]
@@ -72,6 +71,8 @@ abstract class _User extends Entity implements \Atomino\Molecules\Module\Attachm
 	const ROLE_EDIT = "edit";
 	const ROLE_MODERATE = "moderate";
 	const ROLE_SOCIAL = "social";
+	const ROLE_COMMENT = "comment";
+	const ROLE_MODERATOR_ROBOT = "moderator_robot";
 	const attachments = 'attachments';
 	protected array $attachments = [];
 	const created = 'created';
@@ -85,8 +86,7 @@ abstract class _User extends Entity implements \Atomino\Molecules\Module\Attachm
 	const group__moderator = 'moderator';
 	const group__visitor = 'visitor';
 	const guid = 'guid';
-	protected string|null $guid = null;
-	protected function getGuid():string|null{ return $this->guid;}
+	public string|null $guid = null;
 	const id = 'id';
 	protected int|null $id = null;
 	protected function getId():int|null{ return $this->id;}

@@ -1,43 +1,39 @@
 {
-  "name": "elvis/atomino",
-  "description": "atomino project",
-  "authors": [
-	{
-	  "name": "laborci",
-	  "email": "gergely@laborci.hu"
+	"name": "elvis/atomino",
+	"description": "atomino project",
+	"authors": [
+		{
+			"name": "laborci",
+			"email": "gergely@laborci.hu"
+		}
+	],
+	"repositories": [
+		{
+			"type": "path",
+			"url": "~/Work/composer/atomino-framework/*"
+		}
+	],
+	"require": {
+		"atomino/core": "dev-master",
+		"atomino/magic": "dev-master",
+		"atomino/plugin-created": "dev-master",
+		"atomino/plugin-updated": "dev-master",
+		"atomino/plugin-guid": "dev-master",
+		"atomino/plugin-attachment": "dev-master",
+		"atomino/plugin-authenticate": "dev-master",
+		"atomino/plugin-authorize": "dev-master",
+		"atomino/plugin-comment": "dev-master",
+		"ext-json": "*",
+		"ext-gd": "*",
+		"ext-curl": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Atomino\\Atoms\\": "dev/atoms",
+			"Application\\": "dev/src",
+			"Application\\Web\\": "dev/src/@Web",
+			"Application\\Api\\": "dev/src/@Api",
+			"Application\\Admin\\": "dev/src/@Admin"
+		}
 	}
-  ],
-  "repositories": [
-	{
-	  "type": "path",
-	  "url": "~/Work/composer/atomino/*"
-	}
-  ],
-  "require": {
-	"atomino/magic": "dev-master",
-	"atomino/framework": "dev-master",
-	"atomino/responder-api": "dev-master",
-	"atomino/responder-smart": "dev-master",
-	"atomino/responder-file-server": "dev-master",
-	"atomino/plugin-created": "dev-master",
-	"atomino/plugin-updated": "dev-master",
-	"atomino/plugin-guid": "dev-master",
-	"atomino/attachment": "dev-master",
-	"atomino/authenticate": "dev-master",
-	"atomino/authorize": "dev-master",
-	"atomino/middleware-measure": "dev-master",
-	"atomino/middleware-error-handler": "dev-master",
-	"ext-json": "*",
-	"ext-gd": "*",
-	"ext-curl": "*"
-  },
-  "autoload": {
-	"psr-4": {
-	  "Atomino\\Atoms\\": "dev/atoms",
-	  "Application\\": "dev/src",
-	  "Application\\Web\\": "dev/src/@Web",
-	  "Application\\Api\\": "dev/src/@Api",
-	  "Application\\Admin\\": "dev/src/@Admin"
-	}
-  }
 }

@@ -15,11 +15,14 @@ use Atomino\Entity\Attributes\RequiredField;
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $image
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $head
  * @property-read \Atomino\Molecules\Module\Attachment\Collection $file
+ * #[Immutable( 'guid', true )]
+ * #[Protect( 'guid', true, false )]
+ * #[RequiredField('guid', StringField::class)]
  * @method static \Atomino\Database\Finder\Comparison attachments($isin = null)
  * @method static \Atomino\Database\Finder\Comparison authorId($isin = null)
  * @method static \Atomino\Database\Finder\Comparison body($isin = null)
+ * @method static \Atomino\Database\Finder\Comparison commentCache($isin = null)
  * @method static \Atomino\Database\Finder\Comparison guid($isin = null)
- * @property-read string|null $guid
  * @method static \Atomino\Database\Finder\Comparison icon($isin = null)
  * @method static \Atomino\Database\Finder\Comparison iconColor($isin = null)
  * @method static \Atomino\Database\Finder\Comparison id($isin = null)
@@ -32,21 +35,21 @@ use Atomino\Entity\Attributes\RequiredField;
  * @method static \Atomino\Database\Finder\Comparison relatedIds($isin = null)
  * @method static \Atomino\Database\Finder\Comparison status($isin = null)
  * @method static \Atomino\Database\Finder\Comparison title($isin = null)
+ * @property-read \Atomino\Atoms\EntityFinder\_ArticleComment $comments
  * @property-read \Application\Entity\Article[] $related
  */
 #[RequiredField('id', \Atomino\Entity\Field\IntField::class)]
 #[Immutable( 'attachments', true )]
 #[Protect( 'attachments', false, false )]
 #[RequiredField( 'attachments', \Atomino\Entity\Field\JsonField::class )]
-#[Immutable( 'guid', true )]
-#[Protect( 'guid', true, false )]
-#[RequiredField('guid', \Atomino\Entity\Field\StringField::class)]
+#[RequiredField( 'commentCache', \Atomino\Entity\Field\JsonField::class )]
 #[Field("attachments", \Atomino\Entity\Field\JsonField::class)]
 #[Validator("authorId", \Symfony\Component\Validator\Constraints\NotNull::class)]
 #[Validator("authorId", \Symfony\Component\Validator\Constraints\PositiveOrZero::class)]
 #[Field("authorId", \Atomino\Entity\Field\IntField::class)]
 #[Validator("body", \Symfony\Component\Validator\Constraints\Length::class, ['max'=>4294967295])]
 #[Field("body", \Atomino\Entity\Field\StringField::class)]
+#[Field("commentCache", \Atomino\Entity\Field\JsonField::class)]
 #[Validator("guid", \Symfony\Component\Validator\Constraints\NotNull::class)]
 #[Validator("guid", \Symfony\Component\Validator\Constraints\Length::class, ['max'=>36])]
 #[Field("guid", \Atomino\Entity\Field\StringField::class)]
@@ -71,22 +74,24 @@ use Atomino\Entity\Attributes\RequiredField;
 #[Field("status", \Atomino\Entity\Field\BoolField::class)]
 #[Validator("title", \Symfony\Component\Validator\Constraints\Length::class, ['max'=>255])]
 #[Field("title", \Atomino\Entity\Field\StringField::class)]
-abstract class _Article extends Entity implements \Atomino\Molecules\Module\Attachment\AttachmentableInterface{
+abstract class _Article extends Entity implements \Atomino\Molecules\Module\Attachment\AttachmentableInterface, \Atomino\Molecules\EntityPlugin\Commentable\CommentableInterface{
 	static null|Model $model = null;
 	use \Atomino\Molecules\EntityPlugin\Attachmentable\AttachmentableTrait;
 	protected final function __getImage(){return $this->getAttachmentCollection("image");}
 	protected final function __getHead(){return $this->getAttachmentCollection("head");}
 	protected final function __getFile(){return $this->getAttachmentCollection("file");}
 	use \Atomino\Molecules\EntityPlugin\Guid\GuidTrait;
+	use \Atomino\Molecules\EntityPlugin\Commentable\CommentableTrait;
 	const attachments = 'attachments';
 	protected array $attachments = [];
 	const authorId = 'authorId';
 	public int|null $authorId = null;
 	const body = 'body';
 	public string|null $body = null;
+	const commentCache = 'commentCache';
+	public array $commentCache = [];
 	const guid = 'guid';
-	protected string|null $guid = null;
-	protected function getGuid():string|null{ return $this->guid;}
+	public string|null $guid = null;
 	const icon = 'icon';
 	public string|null $icon = null;
 	const iconColor = 'iconColor';

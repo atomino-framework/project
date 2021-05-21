@@ -1,0 +1,24 @@
+{
+    "fields": {
+        "id": {
+            "field": "id",
+            "label": "id",
+            "type": "IntField",
+            "readonly": true
+        },
+        "length": {
+            "field": "length",
+            "label": "length",
+            "type": "IntField",
+            "readonly": false
+        },
+        "name": {
+            "field": "name",
+            "label": "name",
+            "type": "StringField",
+            "readonly": false
+        }
+    },
+    "collections": [],
+    "relations": []
+}

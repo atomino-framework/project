@@ -2,6 +2,7 @@
 
 use Application\Entity\Article;
 use Application\Entity\User;
+use Application\Modules\CommentView;
 use Atomino\Cli\Attributes\Command;
 use Atomino\Cli\CliCommand;
 use Atomino\Cli\CliModule;
@@ -26,8 +27,10 @@ class Test extends CliModule {
 		return (new class() extends CliCommand {
 			protected function exec(mixed $config) {
 				$article = Article::pick(2);
-				print_r($article->isCommentModerator()?1:0);
-				$article->addComment('Hello');
+				$article->addComment(User::pick(2),'Lofasztalicska',4);
+				$comments = $article->getComments(User::pick(1),1,100);
+				$converter = $article->getConverter(User::pick(1),CommentView::class, User::class, true);
+				print_r( $converter->convertComments($comments) );
 			}
 		});
 	}
