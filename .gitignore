@@ -1,4 +1,5 @@
 .idea
+atomino.ini
 vendor
 node_modules
 app/**/*
