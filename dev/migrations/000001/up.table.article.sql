@@ -14,9 +14,10 @@ CREATE TABLE `article` (
   `guid` char(36) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL DEFAULT '' COMMENT 'guid',
   `relatedIds` json DEFAULT NULL,
   `attachments` json DEFAULT NULL,
+  `commentCache` json DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `permalink` (`permalink`),
   KEY `authorId` (`authorId`),
   KEY `status` (`status`),
   FULLTEXT KEY `search` (`title`,`lead`)
-) ENGINE=InnoDB AUTO_INCREMENT=54842 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54862 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;

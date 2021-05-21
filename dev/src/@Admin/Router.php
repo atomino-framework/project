@@ -7,7 +7,6 @@ use function Atomino\dic;
 class Router extends \Atomino\RequestPipeline\Router\Router {
 
 	public function route(): void {
-		dic()->set(Authenticator::class, dic()->get(\UserAuthenticator::class));
 		dic()->get(SessionAuthenticator::class);
 		$this(method: 'GET', path: '/')?->pipe(Page\Index::class);
 		$this(path: 'api/auth/**')?->pipe(Api\AuthApi::class);

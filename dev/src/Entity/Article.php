@@ -1,6 +1,5 @@
 <?php namespace Application\Entity;
 
-
 use Atomino\Atoms\Entity\_Article;
 use Atomino\Entity\Attributes\BelongsToMany;
 use Atomino\Entity\Attributes\HasMany;
@@ -9,7 +8,6 @@ use Atomino\Molecules\EntityPlugin\Attachmentable\Attachmentable;
 use Atomino\Molecules\EntityPlugin\Attachmentable\Attributes\AttachmentCollection;
 use Atomino\Molecules\EntityPlugin\Commentable\Commentable;
 use Atomino\Molecules\EntityPlugin\Guid\Guid;
-use Atomino\Molecules\Module\Authorizable\AuthorizableInterface;
 
 #[Modelify(\Application\Database\DefaultConnection::class, 'article', true)]
 #[BelongsToMany('related', Article::class, 'relatedIds')]

@@ -9,4 +9,4 @@ CREATE TABLE `user` (
   `email` varchar(255) DEFAULT NULL,
   `group` enum('admin','moderator','visitor') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
