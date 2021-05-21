@@ -11,6 +11,6 @@ return ["attachment-entity-plugin" => [
 		"url"          => "/~img",
 		"path"         => path("app/tmp/img/"),
 		"creator"      => \Atomino\Molecules\Module\Attachment\Img\ImgCreatorGD2::class,
-		"secret"       => "your-image-creator-secret",
+		"secret"       => "",
 	],
 ]];
