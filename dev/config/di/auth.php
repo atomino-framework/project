@@ -1,7 +1,7 @@
 <?php
 
 use Application\Entity\User;
-use Atomino\Molecules\Module\Authenticator\Authenticator;
+use Atomino\Bundle\Authenticate\Authenticator;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Configuration as JwtConfiguration;
 use Lcobucci\JWT\Signer\Hmac\Sha256;

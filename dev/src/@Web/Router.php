@@ -1,9 +1,9 @@
 <?php namespace Application\Web;
 
-use Atomino\Molecules\Module\Authenticator\SessionAuthenticator;
-use Atomino\RequestPipeline\Responder\Smart\Cache\Middleware\Cache;
+use Atomino\Bundle\Authenticate\SessionAuthenticator;
+use Atomino\Mercury\Responder\Smart\Cache\Middleware\Cache;
 
-class Router extends \Atomino\RequestPipeline\Router\Router {
+class Router extends \Atomino\Mercury\Router\Router {
 
 	public function __construct(protected SessionAuthenticator $authenticator) { }
 

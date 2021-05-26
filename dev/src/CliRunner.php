@@ -6,9 +6,9 @@ use Application\Modules\CommentView;
 use Atomino\Cli\Attributes\Command;
 use Atomino\Cli\CliCommand;
 use Atomino\Cli\CliModule;
-use Atomino\Database\Cli\Migrator;
-use Atomino\Entity\Cli\Entity;
-use Atomino\Molecules\Magic\Cli\Magic;
+use Atomino\Carbon\Database\Cli\Migrator;
+use Atomino\Carbon\Cli\Entity;
+use Atomino\Magic\Cli\Magic;
 use function Atomino\dic;
 
 class CliRunner extends \Atomino\Cli\CliRunner {
@@ -27,7 +27,7 @@ class Test extends CliModule {
 		return (new class() extends CliCommand {
 			protected function exec(mixed $config) {
 				$article = Article::pick(2);
-				$article->addComment(User::pick(2),'Lofasztalicska',4);
+				$article->addComment(User::pick(2),'faszom');
 				$comments = $article->getComments(User::pick(1),1,100);
 				$converter = $article->getConverter(User::pick(1),CommentView::class, User::class, true);
 				print_r( $converter->convertComments($comments) );

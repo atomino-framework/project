@@ -4,15 +4,267 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d8274acb807d35d9cd04a2371463bcf",
+    "content-hash": "e6fdb27c6d781d6625629a0b3ebb31e4",
     "packages": [
+        {
+            "name": "atomino/bundle-attachment",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-attachment",
+                "reference": "4360662ed2b590a6c2382b78c89c0b65cb9d81fb"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Bundle\\Attachment\\": "bundle/",
+                    "Atomino\\Carbon\\Plugins\\Attachment\\": "plugin-carbon/",
+                    "Atomino\\Mercury\\Plugins\\Attachment\\": "plugin-mercury/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "laborci",
+                    "email": "gergely@laborci.hu"
+                }
+            ],
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/bundle-authenticate",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-authenticate",
+                "reference": "65f9c4baa59db80bf7420b438a65ca05b9fa528d"
+            },
+            "require": {
+                "lcobucci/jwt": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Bundle\\Authenticate\\": "bundle/",
+                    "Atomino\\Carbon\\Plugins\\Authenticate\\": "plugin-carbon/",
+                    "Atomino\\Mercury\\Plugins\\Authenticate\\": "plugin-mercury/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "laborci",
+                    "email": "gergely@laborci.hu"
+                }
+            ],
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/bundle-authorize",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-authorize",
+                "reference": "ffdddca80bd8d35ace4b3b8e32347f39607b49d6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Bundle\\Authorize\\": "bundle/",
+                    "Atomino\\Carbon\\Plugins\\Authorize\\": "plugin-carbon/",
+                    "Atomino\\Mercury\\Plugins\\Authorize\\": "plugin-mercury/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "laborci",
+                    "email": "gergely@laborci.hu"
+                }
+            ],
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/bundle-comment",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-comment",
+                "reference": "9c9ebf6caad8edeeae074fe2b68d81184e1af954"
+            },
+            "require": {
+                "lcobucci/jwt": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Bundle\\Comment\\": "bundle/",
+                    "Atomino\\Carbon\\Plugins\\Comment\\": "plugin-carbon/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "laborci",
+                    "email": "gergely@laborci.hu"
+                }
+            ],
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/bundle-created",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-created",
+                "reference": "8abba63d690d1c31315a2dae732e866b1f177abc"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Carbon\\Plugins\\Created\\": "plugin-carbon/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "laborci",
+                    "email": "gergely@laborci.hu"
+                }
+            ],
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/bundle-guid",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-guid",
+                "reference": "56bd7511df14d01e07c611f667d8d7679fbd3a9a"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Carbon\\Plugins\\Guid\\": "plugin-carbon/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "laborci",
+                    "email": "gergely@laborci.hu"
+                }
+            ],
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/bundle-json",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-json",
+                "reference": "ea1e345d6e191bd9d252f035f521e978059cc358"
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Bundle\\\\JSON\\": "bundle/",
+                    "Atomino\\Carbon\\Plugins\\JSON\\": "plugin-carbon/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gergely Laborci",
+                    "email": "gergely@laborci.hu"
+                },
+                {
+                    "name": "Balázs Láng",
+                    "email": "balazs.lang@outlook.de"
+                }
+            ],
+            "description": "Atomino JSON field entity plugin",
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/bundle-updated",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/bundle-updated",
+                "reference": "6c4b5f2488de1f7c1313a84fd8563f1de9e200c6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Carbon\\Plugins\\Updated\\": "plugin-carbon/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "laborci",
+                    "email": "gergely@laborci.hu"
+                }
+            ],
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
+            "name": "atomino/carbon",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/elvis/Work/composer/atomino-framework/carbon",
+                "reference": "807f4e7dee41d316b1790e960f9b6234d82ce8dc"
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Atomino\\Carbon\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gergely Laborci",
+                    "email": "gergely@laborci.hu"
+                },
+                {
+                    "name": "Balázs Láng",
+                    "email": "balazs.lang@outlook.de"
+                }
+            ],
+            "description": "Atomino entity framework",
+            "transport-options": {
+                "relative": false
+            }
+        },
         {
             "name": "atomino/core",
             "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "/Users/elvis/Work/composer/atomino-framework/core",
-                "reference": "f3db14ab0a498838df740a3594a83ac0f038ed8c"
+                "reference": "c93ba9b691ddb931166b38309c09a495bd4f19bb"
             },
             "require": {
                 "ext-gd": "*",
@@ -66,7 +318,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Atomino\\Molecules\\Magic\\": "src/"
+                    "Atomino\\Magic\\": "src/"
                 }
             },
             "authors": [
@@ -80,181 +332,36 @@
             }
         },
         {
-            "name": "atomino/plugin-attachment",
+            "name": "atomino/mercury",
             "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "/Users/elvis/Work/composer/atomino-framework/plugin-attachment",
-                "reference": "4360662ed2b590a6c2382b78c89c0b65cb9d81fb"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Atomino\\Molecules\\Module\\Attachment\\": "src/Module/",
-                    "Atomino\\Molecules\\EntityPlugin\\Attachmentable\\": "src/EntityPlugin/"
-                }
-            },
-            "authors": [
-                {
-                    "name": "laborci",
-                    "email": "gergely@laborci.hu"
-                }
-            ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
-            "name": "atomino/plugin-authenticate",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/Users/elvis/Work/composer/atomino-framework/plugin-authenticate",
-                "reference": "65f9c4baa59db80bf7420b438a65ca05b9fa528d"
+                "url": "/Users/elvis/Work/composer/atomino-framework/mercury",
+                "reference": "0d2cc470e189f04fba4a3106982bcacde8376a21"
             },
             "require": {
-                "lcobucci/jwt": "^4.0"
+                "ext-json": "*"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Atomino\\Molecules\\Module\\Authenticator\\": "src/Module/",
-                    "Atomino\\Molecules\\EntityPlugin\\Authenticable\\": "src/EntityPlugin/",
-                    "Atomino\\Molecules\\Middleware\\Auth\\": "src/Middleware/"
+                    "Atomino\\Mercury\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
-                    "name": "laborci",
+                    "name": "Gergely Laborci",
                     "email": "gergely@laborci.hu"
-                }
-            ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
-            "name": "atomino/plugin-authorize",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/Users/elvis/Work/composer/atomino-framework/plugin-authorize",
-                "reference": "ffdddca80bd8d35ace4b3b8e32347f39607b49d6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Atomino\\Molecules\\Module\\Authorizable\\": "src/Module/",
-                    "Atomino\\Molecules\\EntityPlugin\\Authorizable\\": "src/EntityPlugin/",
-                    "Atomino\\Molecules\\Middleware\\Auth\\": "src/Middleware"
-                }
-            },
-            "authors": [
+                },
                 {
-                    "name": "laborci",
-                    "email": "gergely@laborci.hu"
+                    "name": "Balázs Láng",
+                    "email": "balazs.lang@outlook.de"
                 }
             ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
-            "name": "atomino/plugin-comment",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/Users/elvis/Work/composer/atomino-framework/plugin-comment",
-                "reference": "a1a727b38b0268a220fb4c3c74d17d756fe2d287"
-            },
-            "require": {
-                "lcobucci/jwt": "^4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Atomino\\Molecules\\Module\\Comment\\": "src/Module/",
-                    "Atomino\\Molecules\\EntityPlugin\\Commentable\\": "src/EntityPlugin/"
-                }
-            },
-            "authors": [
-                {
-                    "name": "laborci",
-                    "email": "gergely@laborci.hu"
-                }
-            ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
-            "name": "atomino/plugin-created",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/Users/elvis/Work/composer/atomino-framework/plugin-created",
-                "reference": "8abba63d690d1c31315a2dae732e866b1f177abc"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Atomino\\Molecules\\EntityPlugin\\Created\\": "src/"
-                }
-            },
-            "authors": [
-                {
-                    "name": "laborci",
-                    "email": "gergely@laborci.hu"
-                }
-            ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
-            "name": "atomino/plugin-guid",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/Users/elvis/Work/composer/atomino-framework/plugin-guid",
-                "reference": "56bd7511df14d01e07c611f667d8d7679fbd3a9a"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Atomino\\Molecules\\EntityPlugin\\Guid\\": "src/"
-                }
-            },
-            "authors": [
-                {
-                    "name": "laborci",
-                    "email": "gergely@laborci.hu"
-                }
-            ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
-            "name": "atomino/plugin-updated",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "/Users/elvis/Work/composer/atomino-framework/plugin-updated",
-                "reference": "6c4b5f2488de1f7c1313a84fd8563f1de9e200c6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Atomino\\Molecules\\EntityPlugin\\Updated\\": "src/"
-                }
-            },
-            "authors": [
-                {
-                    "name": "laborci",
-                    "email": "gergely@laborci.hu"
-                }
-            ],
+            "description": "Atomino request pipeline",
             "transport-options": {
                 "relative": false
             }
@@ -2949,13 +3056,16 @@
     "stability-flags": {
         "atomino/core": 20,
         "atomino/magic": 20,
-        "atomino/plugin-created": 20,
-        "atomino/plugin-updated": 20,
-        "atomino/plugin-guid": 20,
-        "atomino/plugin-attachment": 20,
-        "atomino/plugin-authenticate": 20,
-        "atomino/plugin-authorize": 20,
-        "atomino/plugin-comment": 20
+        "atomino/bundle-created": 20,
+        "atomino/bundle-updated": 20,
+        "atomino/bundle-guid": 20,
+        "atomino/bundle-authenticate": 20,
+        "atomino/bundle-authorize": 20,
+        "atomino/bundle-comment": 20,
+        "atomino/bundle-attachment": 20,
+        "atomino/bundle-json": 20,
+        "atomino/carbon": 20,
+        "atomino/mercury": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

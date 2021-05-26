@@ -2,9 +2,9 @@
 
 use Application\ErrorHandlerMiddlewareLogHandler;
 use Application\ExceptionHandlerMiddlewareLogHandler;
-use Atomino\RequestPipeline\Middleware\ErrorHandler;
-use Atomino\RequestPipeline\Middleware\ExceptionHandler;
-use Atomino\RequestPipeline\Responder\Smart\Cache\CacheInterface;
+use Atomino\Mercury\Middleware\ErrorHandler;
+use Atomino\Mercury\Middleware\ExceptionHandler;
+use Atomino\Mercury\Responder\Smart\Cache\CacheInterface;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use function Atomino\{cfg, dic};

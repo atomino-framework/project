@@ -1,8 +1,8 @@
 <?php
 
-use Atomino\Entity\Cache;
-use Atomino\Molecules\Module\Attachment\Config;
-use Atomino\Molecules\Module\Attachment\Img\ImgCreatorInterface;
+use Atomino\Carbon\Cache;
+use Atomino\Bundle\Attachment\Config;
+use Atomino\Bundle\Attachment\Img\ImgCreatorInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use function Atomino\cfg;
 use function DI\factory;

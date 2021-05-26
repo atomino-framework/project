@@ -1,51 +1,51 @@
 <?php namespace Atomino\Atoms\Entity;
 
-use Atomino\Database\Finder\Filter;
-use Atomino\Entity\Attributes\Field;
-use Atomino\Entity\Attributes\Immutable;
-use Atomino\Entity\Attributes\Protect;
-use Atomino\Entity\Attributes\Validator;
-use Atomino\Entity\Entity;
-use Atomino\Entity\Model;
-use Atomino\Entity\Attributes\RequiredField;
+use Atomino\Carbon\Database\Finder\Filter;
+use Atomino\Carbon\Attributes\Field;
+use Atomino\Carbon\Attributes\Immutable;
+use Atomino\Carbon\Attributes\Protect;
+use Atomino\Carbon\Attributes\Validator;
+use Atomino\Carbon\Entity;
+use Atomino\Carbon\Model;
+use Atomino\Carbon\Attributes\RequiredField;
 
 
 /**
  * @method static \Atomino\Atoms\EntityFinder\_ArticleComment search( Filter $filter = null )
- * @method static \Atomino\Database\Finder\Comparison asId($isin = null)
- * @method static \Atomino\Database\Finder\Comparison created($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison asId($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison created($isin = null)
  * @property-read \DateTime|null $created
- * @method static \Atomino\Database\Finder\Comparison hostId($isin = null)
- * @method static \Atomino\Database\Finder\Comparison id($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison hostId($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison id($isin = null)
  * @property-read int|null $id
- * @method static \Atomino\Database\Finder\Comparison replyId($isin = null)
- * @method static \Atomino\Database\Finder\Comparison status($isin = null)
- * @method static \Atomino\Database\Finder\Comparison text($isin = null)
- * @method static \Atomino\Database\Finder\Comparison userId($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison replyId($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison status($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison text($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison userId($isin = null)
  * @property-read \Application\Entity\Article $host
  */
-#[RequiredField('id', \Atomino\Entity\Field\IntField::class)]
+#[RequiredField('id', \Atomino\Carbon\Field\IntField::class)]
 #[Immutable("created", true)]
 #[Protect("created", true, false)]
-#[RequiredField("created", \Atomino\Entity\Field\DateTimeField::class)]
+#[RequiredField("created", \Atomino\Carbon\Field\DateTimeField::class)]
 #[Validator("asId", \Symfony\Component\Validator\Constraints\PositiveOrZero::class)]
-#[Field("asId", \Atomino\Entity\Field\IntField::class)]
-#[Field("created", \Atomino\Entity\Field\DateTimeField::class)]
+#[Field("asId", \Atomino\Carbon\Field\IntField::class)]
+#[Field("created", \Atomino\Carbon\Field\DateTimeField::class)]
 #[Validator("hostId", \Symfony\Component\Validator\Constraints\PositiveOrZero::class)]
-#[Field("hostId", \Atomino\Entity\Field\IntField::class)]
-#[Field("id", \Atomino\Entity\Field\IntField::class)]
+#[Field("hostId", \Atomino\Carbon\Field\IntField::class)]
+#[Field("id", \Atomino\Carbon\Field\IntField::class)]
 #[Protect("id", true, false)]
 #[Immutable("id",false)]
 #[Validator("replyId", \Symfony\Component\Validator\Constraints\PositiveOrZero::class)]
-#[Field("replyId", \Atomino\Entity\Field\IntField::class)]
-#[Field("status", \Atomino\Entity\Field\BoolField::class)]
+#[Field("replyId", \Atomino\Carbon\Field\IntField::class)]
+#[Field("status", \Atomino\Carbon\Field\BoolField::class)]
 #[Validator("text", \Symfony\Component\Validator\Constraints\Length::class, ['max'=>65535])]
-#[Field("text", \Atomino\Entity\Field\StringField::class)]
+#[Field("text", \Atomino\Carbon\Field\StringField::class)]
 #[Validator("userId", \Symfony\Component\Validator\Constraints\PositiveOrZero::class)]
-#[Field("userId", \Atomino\Entity\Field\IntField::class)]
+#[Field("userId", \Atomino\Carbon\Field\IntField::class)]
 abstract class _ArticleComment extends Entity {
 	static null|Model $model = null;
-	use \Atomino\Molecules\EntityPlugin\Created\CreatedTrait;
+	use \Atomino\Carbon\Plugins\Created\CreatedTrait;
 	const asId = 'asId';
 	public int|null $asId = null;
 	const created = 'created';

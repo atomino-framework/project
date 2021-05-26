@@ -1,5 +1,5 @@
 <?php namespace Atomino\Atoms\EntityFinder;
-use Atomino\Entity\Finder;
+use Atomino\Carbon\Finder;
 
 /**
  * Nobody uses this class, it exists only to help the code completion... waiting for generics...

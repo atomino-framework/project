@@ -1,21 +1,21 @@
 <?php namespace Application\Entity;
 
 use Atomino\Atoms\Entity\_User;
-use Atomino\Database\Finder\Filter;
-use Atomino\Entity\Attributes\BelongsTo;
-use Atomino\Entity\Attributes\HasMany;
-use Atomino\Entity\Attributes\Modelify;
-use Atomino\Entity\Attributes\Protect;
-use Atomino\Entity\Attributes\Validator;
-use Atomino\Entity\EntityInterface;
-use Atomino\Molecules\EntityPlugin\Attachmentable\Attachmentable;
-use Atomino\Molecules\EntityPlugin\Attachmentable\Attributes\AttachmentCollection;
-use Atomino\Molecules\EntityPlugin\Authenticable\Authenticable;
-use Atomino\Molecules\EntityPlugin\Authorizable\Authorizable;
-use Atomino\Molecules\EntityPlugin\Created\Created;
-use Atomino\Molecules\EntityPlugin\Guid\Guid;
-use Atomino\Molecules\EntityPlugin\Updated\Updated;
-use Atomino\Molecules\Module\Comment\CommenterInterface;
+use Atomino\Carbon\Database\Finder\Filter;
+use Atomino\Carbon\Attributes\BelongsTo;
+use Atomino\Carbon\Attributes\HasMany;
+use Atomino\Carbon\Attributes\Modelify;
+use Atomino\Carbon\Attributes\Protect;
+use Atomino\Carbon\Attributes\Validator;
+use Atomino\Carbon\EntityInterface;
+use Atomino\Carbon\Plugins\Attachment\Attachmentable;
+use Atomino\Carbon\Plugins\Attachment\AttachmentCollection;
+use Atomino\Carbon\Plugins\Authenticate\Authenticable;
+use Atomino\Carbon\Plugins\Authorize\Authorizable;
+use Atomino\Carbon\Plugins\Created\Created;
+use Atomino\Carbon\Plugins\Guid\Guid;
+use Atomino\Carbon\Plugins\Updated\Updated;
+use Atomino\Bundle\Comment\CommenterInterface;
 
 #[Modelify( \Application\Database\DefaultConnection::class, 'user', true )]
 #[Validator( 'email', \Symfony\Component\Validator\Constraints\Email::class )]

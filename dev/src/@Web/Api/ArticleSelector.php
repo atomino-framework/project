@@ -2,8 +2,8 @@
 
 use Application\Entity\Article;
 use Atomino\Molecules\Magic\SelectorApi;
-use Atomino\Database\Finder\Filter;
-use Atomino\Entity\Entity;
+use Atomino\Carbon\Database\Finder\Filter;
+use Atomino\Carbon\Entity;
 
 class ArticleSelector extends SelectorApi {
 	/** @param Article $item */

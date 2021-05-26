@@ -1,6 +1,6 @@
 <?php
 
-use Atomino\RequestPipeline\Responder\Smart\SmartResponderEnv;
+use Atomino\Mercury\Responder\Smart\SmartResponderEnv;
 use function Atomino\cfg;
 use function DI\factory;
 

@@ -1,13 +1,13 @@
 <?php namespace Application\Entity;
 
 use Atomino\Atoms\Entity\_Article;
-use Atomino\Entity\Attributes\BelongsToMany;
-use Atomino\Entity\Attributes\HasMany;
-use Atomino\Entity\Attributes\Modelify;
-use Atomino\Molecules\EntityPlugin\Attachmentable\Attachmentable;
-use Atomino\Molecules\EntityPlugin\Attachmentable\Attributes\AttachmentCollection;
-use Atomino\Molecules\EntityPlugin\Commentable\Commentable;
-use Atomino\Molecules\EntityPlugin\Guid\Guid;
+use Atomino\Carbon\Attributes\BelongsToMany;
+use Atomino\Carbon\Attributes\HasMany;
+use Atomino\Carbon\Attributes\Modelify;
+use Atomino\Carbon\Plugins\Attachment\Attachmentable;
+use Atomino\Carbon\Plugins\Attachment\AttachmentCollection;
+use Atomino\Carbon\Plugins\Comment\Commentable;
+use Atomino\Carbon\Plugins\Guid\Guid;
 
 #[Modelify(\Application\Database\DefaultConnection::class, 'article', true)]
 #[BelongsToMany('related', Article::class, 'relatedIds')]

@@ -1,7 +1,7 @@
 <?php
 
 use Application\Database\DefaultConnection;
-use Atomino\Database\Connection;
+use Atomino\Carbon\Database\Connection;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use function Atomino\cfg;

@@ -1,10 +1,10 @@
 <?php namespace Application\Admin;
 
-use Atomino\Molecules\Module\Authenticator\Authenticator;
-use Atomino\Molecules\Module\Authenticator\SessionAuthenticator;
+use Atomino\Bundle\Authenticate\Authenticator;
+use Atomino\Bundle\Authenticate\SessionAuthenticator;
 use function Atomino\dic;
 
-class Router extends \Atomino\RequestPipeline\Router\Router {
+class Router extends \Atomino\Mercury\Router\Router {
 
 	public function route(): void {
 		dic()->get(SessionAuthenticator::class);

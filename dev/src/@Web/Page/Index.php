@@ -1,7 +1,7 @@
 <?php namespace Application\Web\Page;
 
-use Atomino\RequestPipeline\Responder\Smart\SmartResponder;
-use Atomino\RequestPipeline\Responder\Smart\Attributes\{Cache, Args, CSS, JS, Init};
+use Atomino\Mercury\Responder\Smart\SmartResponder;
+use Atomino\Mercury\Responder\Smart\Attributes\{Cache, Args, CSS, JS, Init};
 use Symfony\Component\HttpFoundation\Response;
 
 

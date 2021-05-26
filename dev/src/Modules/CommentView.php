@@ -1,8 +1,8 @@
 <?php namespace Application\Modules;
 
 use Application\Entity\User;
-use Atomino\Molecules\Module\Comment\CommentInterface;
-use Atomino\Molecules\Module\Comment\CommentViewInterface;
+use Atomino\Bundle\Comment\CommentInterface;
+use Atomino\Bundle\Comment\CommentViewInterface;
 
 
 class CommentView implements CommentViewInterface {

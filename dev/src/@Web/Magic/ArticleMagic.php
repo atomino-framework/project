@@ -2,7 +2,7 @@
 
 use Application\Entity\Article;
 use Atomino\Molecules\Magic\MagicApi;
-use Atomino\Database\Finder\Filter;
+use Atomino\Carbon\Database\Finder\Filter;
 
 
 class ArticleMagic extends MagicApi {

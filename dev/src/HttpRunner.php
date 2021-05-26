@@ -1,8 +1,8 @@
 <?php namespace Application;
 
 use Atomino\Core\Runner\HttpRunnerInterface;
-use Atomino\RequestPipeline\Middleware\Emitter;
-use Atomino\RequestPipeline\Pipeline\Pipeline;
+use Atomino\Mercury\Middleware\Emitter;
+use Atomino\Mercury\Pipeline\Pipeline;
 
 class HttpRunner implements HttpRunnerInterface {
 	public function run(): void {

@@ -1,31 +1,35 @@
 <?php namespace Atomino\Atoms\Entity;
 
-use Atomino\Database\Finder\Filter;
-use Atomino\Entity\Attributes\Field;
-use Atomino\Entity\Attributes\Immutable;
-use Atomino\Entity\Attributes\Protect;
-use Atomino\Entity\Attributes\Validator;
-use Atomino\Entity\Entity;
-use Atomino\Entity\Model;
-use Atomino\Entity\Attributes\RequiredField;
+use Atomino\Carbon\Database\Finder\Filter;
+use Atomino\Carbon\Attributes\Field;
+use Atomino\Carbon\Attributes\Immutable;
+use Atomino\Carbon\Attributes\Protect;
+use Atomino\Carbon\Attributes\Validator;
+use Atomino\Carbon\Entity;
+use Atomino\Carbon\Model;
+use Atomino\Carbon\Attributes\RequiredField;
 
 
 /**
  * @method static \Atomino\Atoms\EntityFinder\_Product search( Filter $filter = null )
- * @method static \Atomino\Database\Finder\Comparison id($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison amount($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison id($isin = null)
  * @property-read int|null $id
- * @method static \Atomino\Database\Finder\Comparison name($isin = null)
- * @method static \Atomino\Database\Finder\Comparison price($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison name($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison price($isin = null)
  */
-#[RequiredField('id', \Atomino\Entity\Field\IntField::class)]
-#[Field("id", \Atomino\Entity\Field\IntField::class)]
+#[RequiredField('id', \Atomino\Carbon\Field\IntField::class)]
+#[Field("amount", \Atomino\Carbon\Field\IntField::class)]
+#[Field("id", \Atomino\Carbon\Field\IntField::class)]
 #[Protect("id", true, false)]
 #[Immutable("id",false)]
 #[Validator("name", \Symfony\Component\Validator\Constraints\Length::class, ['max'=>255])]
-#[Field("name", \Atomino\Entity\Field\StringField::class)]
-#[Field("price", \Atomino\Entity\Field\IntField::class)]
+#[Field("name", \Atomino\Carbon\Field\StringField::class)]
+#[Field("price", \Atomino\Carbon\Field\IntField::class)]
 abstract class _Product extends Entity {
 	static null|Model $model = null;
+	const amount = 'amount';
+	public int|null $amount = null;
 	const id = 'id';
 	protected int|null $id = null;
 	protected function getId():int|null{ return $this->id;}

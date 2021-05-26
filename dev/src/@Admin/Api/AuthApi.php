@@ -1,10 +1,10 @@
 <?php namespace Application\Admin\Api;
 
 use Application\Entity\User;
-use Atomino\Molecules\Module\Authenticator\SessionAuthenticator;
-use Atomino\RequestPipeline\Responder\Api\Api;
-use Atomino\RequestPipeline\Responder\Api\Attributes\Auth;
-use Atomino\RequestPipeline\Responder\Api\Attributes\Route;
+use Atomino\Bundle\Authenticate\SessionAuthenticator;
+use Atomino\Mercury\Responder\Api\Api;
+use Atomino\Mercury\Responder\Api\Attributes\Auth;
+use Atomino\Mercury\Responder\Api\Attributes\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthApi extends Api{
