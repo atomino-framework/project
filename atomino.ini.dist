@@ -1,3 +1,4 @@
+domain = ""
 database.dsn = "mysql:host=localhost;dbname=;user=;password=;charset=UTF8"
 auth.jwt-key = ""
 attachment-entity-plugin.img.secret = ""
