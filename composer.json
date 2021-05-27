@@ -11,12 +11,7 @@
 			"email": "balazs.lang@outlook.de"
 		}
 	],
-	"repositories": [
-		{
-			"type": "path",
-			"url": "~/Work/composer/atomino-framework/*"
-		}
-	],
+	
 	"require": {
 		"atomino/core": "dev-master",
 		"atomino/magic": "dev-master",
