@@ -1,2 +1,7 @@
 #!/usr/bin/env php
-<?php include __DIR__.'/dev/app.php';
+<?php
+ob_clean();
+putenv("@root=" . __DIR__);
+putenv("@config=" . __DIR__ . '/dev/config/config.php');
+putenv("@di=" . __DIR__ . '/dev/config/di.php');
+include __DIR__ . '/dev/app.php';

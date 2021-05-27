@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "serve": "php -S 127.0.0.1:8080 dev/app.php",
+    "serve": "php -S 127.0.0.1:8080 atomino",
     "atomino": "php dev/app.php",
     "fontawesome": "node build.js fontawesome",
     "assets": "node build.js assets",

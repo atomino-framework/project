@@ -9,6 +9,7 @@ use function Atomino\path;
 
 class MainRouter extends Router {
 	protected function route(): void {
+		
 		$request = $this->request;
 		$domain = cfg('domain');
 

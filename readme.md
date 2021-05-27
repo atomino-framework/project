@@ -24,7 +24,7 @@
 
 ## Run and test with the built-in server
 
-- `php -S 127.0.0.1:8080 dev/app.php`
+- `php -S 127.0.0.1:8080 atomino`
 - open in browser: `http://www.my-project.localhost:8080`
   - you should see an atom
 - open in browser: `http://api.my-project.localhost:8080/user/1`
