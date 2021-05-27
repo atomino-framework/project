@@ -1,10 +1,6 @@
 <?php
-
+use function Atomino\{loadenv, path};
 include __DIR__ . "/../vendor/autoload.php";
-
-putenv("ROOT=".realpath(__DIR__.'/../'));
-
-new Atomino\Core\Application(
-	include __DIR__ . "/../dev/config/config.php",
-	include __DIR__ . "/../dev/config/di.php"
-);
+putenv("@root=" . realpath(__DIR__ . '/../'));
+loadenv(path('atomino.env'));
+new Atomino\Core\Application(include getenv('@config'), include getenv('@di'));
