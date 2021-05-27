@@ -6,7 +6,7 @@
 
 - php 8.0; gd
 - apache 2.0
-- mysql 5.6
+- mysql 8.0
 - composer
 
 ### Create project
@@ -18,6 +18,7 @@
 - open `atomino.ini` with a text editor and set all the config values
 - `./atomino mig:init` - initializes the migrations
 - `./atomino mig:migrate` - do the first migration (users)
+- `./atomino publish` - copy all assets to the public folder
 
 ### Run and test with the built in server
 
@@ -48,7 +49,7 @@
 - `npm run fontawesome` - copies the fontawesome to assets
 - `npm run fonts` - copies other @fontsource fonts to assets
 - `npm run build` - builds the frontend packages
-- `npm run assets` - copies all assets to public
+- `npm run assets` or `./atomino publish` - copies all assets to public
 - open the admin.**your.domain** in your browser
   - user: atomino@atomino.atom
   - pass: atomino
