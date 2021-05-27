@@ -13,10 +13,6 @@ class UserMagic extends MagicApi {
 		return Filter::where(User::name()->like('%' . $quickSearch . '%'))->or(User::id($quickSearch));
 	}
 
-	protected function preprocess($data){
-		$data['name'] = strtoupper($data['name']);
-		return $data;
-	}
 
 	/**
 	 * @param User $item

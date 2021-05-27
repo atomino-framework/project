@@ -9,9 +9,7 @@ class Router extends \Atomino\Mercury\Router\Router {
 
 	public function route():void{
 		$this(method: 'GET', path: '/')?->pipe(Cache::class)->pipe(Page\Index::class);
-		$this(path: 'api/auth/**')?->pipe(Api\AuthApi::class);
-		$this(path: 'api/article-selector/**')?->pipe(Api\ArticleSelector::class);
-		$this(path: 'magic/article/**')?->pipe(Magic\ArticleMagic::class);
+		$this()?->pipe(Page\Error404::class);
 	}
 
 }

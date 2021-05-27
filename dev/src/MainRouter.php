@@ -18,5 +18,6 @@ class MainRouter extends Router {
 		ImgServer::route($this);
 		$this(host: 'admin.**')?->pipe(Admin\Router::class);
 		$this(host: 'www.**')?->pipe(Web\Router::class);
+		$this(host: 'api.**')?->pipe(Api\Router::class);
 	}
 }

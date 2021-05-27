@@ -1,13 +1,10 @@
 <?php namespace Application\Entity;
 
 use Atomino\Atoms\Entity\_User;
-use Atomino\Carbon\Database\Finder\Filter;
-use Atomino\Carbon\Attributes\BelongsTo;
-use Atomino\Carbon\Attributes\HasMany;
+use Atomino\Bundle\Comment\CommenterInterface;
 use Atomino\Carbon\Attributes\Modelify;
 use Atomino\Carbon\Attributes\Protect;
 use Atomino\Carbon\Attributes\Validator;
-use Atomino\Carbon\EntityInterface;
 use Atomino\Carbon\Plugins\Attachment\Attachmentable;
 use Atomino\Carbon\Plugins\Attachment\AttachmentCollection;
 use Atomino\Carbon\Plugins\Authenticate\Authenticable;
@@ -15,7 +12,6 @@ use Atomino\Carbon\Plugins\Authorize\Authorizable;
 use Atomino\Carbon\Plugins\Created\Created;
 use Atomino\Carbon\Plugins\Guid\Guid;
 use Atomino\Carbon\Plugins\Updated\Updated;
-use Atomino\Bundle\Comment\CommenterInterface;
 
 #[Modelify( \Application\Database\DefaultConnection::class, 'user', true )]
 #[Validator( 'email', \Symfony\Component\Validator\Constraints\Email::class )]

@@ -13,9 +13,9 @@ let cardify: Function = (item: any) => ListCard.Cardify(
 	item.id,
 	() => form.open(item.id),
 	item.name,
-	item.publishDate !== null,
+true,
 	null,
-	"https://picsum.photos/50/50" + "?" + Math.random(),
+	null,
 	[],
 	[
 		ListCard.Property("created", item.created),
@@ -29,7 +29,7 @@ list = List.create(
 	"fas fa-users",
 	100,
 	[
-		ListConfig.Sorting('név', true).asc('name'),
+		ListConfig.Sorting('name', true).asc('name'),
 	],
 	'/magic/user',
 	{component: ListCard.Component, cardify}
@@ -50,11 +50,11 @@ form.addAction(actions.form.attachment(userModel.collections));
 form.addAction(actions.form.save());
 form.addAction(actions.form.delete());
 
-form.addSection('Adatok', false).add(
+form.addSection("User properties", false).add(
 	MagicForm.inputs.string(fields.name),
 	MagicForm.inputs.string(fields.email),
 	MagicForm.inputs.select(fields.group).options(fields.group.options),
-	MagicForm.inputs.string('setpassword', 'jelszó'),
+	MagicForm.inputs.string('setpassword', 'password'),
 );
 
 export {list as userList, form as userForm};
