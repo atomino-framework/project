@@ -1,10 +1,14 @@
 {
-	"name": "elvis/atomino",
+	"name": "atomino-framework/project",
 	"description": "atomino project",
 	"authors": [
 		{
-			"name": "laborci",
+			"name": "Gergely Laborci",
 			"email": "gergely@laborci.hu"
+		},
+		{
+			"name": "Balázs Láng",
+			"email": "balazs.lang@outlook.de"
 		}
 	],
 	"repositories": [
