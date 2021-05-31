@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-ob_clean();
+ob_get_length() && ob_clean();
 putenv("@root=" . __DIR__);
 putenv("@config=" . __DIR__ . '/dev/config/config.php');
 putenv("@di=" . __DIR__ . '/dev/config/di.php');

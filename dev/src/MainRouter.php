@@ -4,12 +4,18 @@ use Atomino\Mercury\Plugins\Attachment\ImgServer;
 use Atomino\Mercury\Plugins\Attachment\AttachmentServer;
 use Atomino\Mercury\FileServer\StaticServer;
 use Atomino\Mercury\Router\Router;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Contracts\EventDispatcher\Event;
 use function Atomino\cfg;
 use function Atomino\path;
 
 class MainRouter extends Router {
+
+	public function __construct(protected EventDispatcher $dispatcher) {}
+
 	protected function route(): void {
-		
+
+
 		$request = $this->request;
 		$domain = cfg('domain');
 
