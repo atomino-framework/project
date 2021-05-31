@@ -2,7 +2,6 @@ domain = ""
 database.dsn = "mysql:host=localhost;dbname=;user=;password=;charset=UTF8"
 auth.jwt-key = ""
 attachment-entity-plugin.img.secret = ""
-smart-responder.debug = false
 debug = false
 rlogtail.connection = "unix-socket"
-rlogtail.address = "/Users/elvis/Work/htdocs/atomino/rlogtail.sock"
+rlogtail.address = "path-to-your-project/rlogtail.sock"
