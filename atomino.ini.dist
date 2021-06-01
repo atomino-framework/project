@@ -4,4 +4,4 @@ auth.jwt-key = ""
 attachment-entity-plugin.img.secret = ""
 debug = false
 rlogtail.connection = "unix-socket"
-rlogtail.address = "path-to-your-project/rlogtail.sock"
+rlogtail.address:path = "rlogtail.sock"
