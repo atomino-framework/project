@@ -10,5 +10,6 @@ module.exports = {
 		new (require('./node_modules/rlogtail/src/plugins/error.js'))('error', 'e', 'Error', true),
 		new (require('./node_modules/rlogtail/src/plugins/exception.js'))('exception', 'x', 'Exception', true),
 		new (require('./node_modules/rlogtail/src/plugins/trace.js'))('trace', 't', 'Trace', false),
+		new (require('./node_modules/rlogtail/src/plugins/request.js'))('request', 'r', 'Request', true),
 	]
 }
