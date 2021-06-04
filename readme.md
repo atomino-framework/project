@@ -3,7 +3,7 @@
 ## Requirements
 
 - php 8.0; gd
-- apache 2.0
+- apache 2.4
 - mysql 8.0
 - composer
 
@@ -11,7 +11,6 @@
 
 - `composer create-project atomino/project your-project -s dev`
 - `cd your-project`
-- `mv atomino.ini.dist atomino.ini`
 - create a mysql database for your project (utf-8)
 - open `atomino.ini` with a text editor and set all the config values
   - database connection
@@ -32,9 +31,8 @@
 
 # Setup apache
 
-- `mv app/etc/vhost.dist app/etc/vhost`
 - open `app/etc/vhost/vhost.conf` and set the domain, and root variables
-- include the `app/etc/vhost/vhost.conf` in your httpd.conf file
+- include the `app/etc/vhost/vhost.conf` in your httpd.conf or apache2.conf file
 - reload/restart apache
 - open the `http://www.my-project.localhost` you just set in your browser
 
