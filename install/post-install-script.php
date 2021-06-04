@@ -57,5 +57,5 @@ file_put_contents($projectRoot . '/package.json', json_encode($package, JSON_PRE
 
 // remove installer
 
+unlink($projectRoot . '/install//post-install-script.php');
 rmdir($projectRoot . '/install');
-unlink($projectRoot . '/post-install-script.php');
