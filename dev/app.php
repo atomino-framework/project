@@ -1,3 +1,7 @@
-<?php
+<?php use Atomino\Core\Application;
+
 require getenv("@root")."/vendor/autoload.php";
-new Atomino\Core\Application(include getenv('@config'), include getenv('@di'));
+
+Application::setConfig(include getenv('@config'));
+Application::setDI(include getenv('@di'));
+Application::boot();
