@@ -16,6 +16,7 @@ function struct($tree, $root) {
 // create needed folders
 
 struct([
+	'.my-repos'=>[],
 	'app' => [
 		'data'   => [
 			'attachments' => ['.gitkeep'],

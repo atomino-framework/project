@@ -14,12 +14,15 @@
 	"scripts": {
 		"post-root-package-install": [
 			"php post-install-script.php"
+		],
+		"post-create-project-cmd": [
+			"rmdir .my-repos"
 		]
 	},
 	"repositories": [
 		{
 			"type": "path",
-			"url": "~/Work/composer/atomino-framework/*"
+			"url": ".my-repos/*"
 		}
 	],
 	"require": {

@@ -7,3 +7,4 @@ app
 **/.DS_store
 composer.lock
 package-lock.json
+.my-repos
