@@ -35,7 +35,7 @@ rename(__DIR__ . '/install/.gitignore.dist', __DIR__ . '/.gitignore');
 
 file_put_contents('1', __DIR__ . '/app/var/version');
 
-$composer = json_decode(file_get_contents(__DIR__ . '/composer.json'));
+$composer = json_decode(file_get_contents(__DIR__ . '/composer.json'), true);
 
 $composer['authors'] = [];
 unset($composer['description']);
@@ -44,7 +44,7 @@ $composer['name'] = basename(__DIR__);
 
 file_get_contents(__DIR__ . '/composer.json', json_encode($composer, JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_UNESCAPED_UNICODE));
 
-$package = json_decode(file_get_contents(__DIR__ . '/package.json'));
+$package = json_decode(file_get_contents(__DIR__ . '/package.json'), true);
 $package['author'] = '';
 $package['name'] = basename(__DIR__);
 file_get_contents(__DIR__ . '/package.json.json', json_encode($package, JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_UNESCAPED_UNICODE));
