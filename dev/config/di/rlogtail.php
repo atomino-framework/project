@@ -8,7 +8,6 @@ use function Atomino\cfg;
 use function Atomino\dic;
 use function DI\factory;
 
-return cfg('debug') ? [
-	\Atomino\Debug\Debug::class  => factory(fn() => new Debug(dic()->get(RLogTail::class))),
-	ErrorHandlerInterface::class => factory(fn() => new ErrorHandler()),
-] : [];
+return [
+	RLogTail::class => factory(fn() => new RLogTail(cfg('rlogtail.connection'), cfg('rlogtail.address'))),
+];
