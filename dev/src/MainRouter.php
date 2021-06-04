@@ -3,6 +3,7 @@
 use Atomino\Mercury\Plugins\Attachment\ImgServer;
 use Atomino\Mercury\Plugins\Attachment\AttachmentServer;
 use Atomino\Mercury\FileServer\StaticServer;
+use Atomino\Mercury\Responder\Redirect;
 use Atomino\Mercury\Router\Router;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Contracts\EventDispatcher\Event;
@@ -11,10 +12,9 @@ use function Atomino\path;
 
 class MainRouter extends Router {
 
-	public function __construct(protected EventDispatcher $dispatcher) {}
+	public function __construct() { }
 
 	protected function route(): void {
-
 
 		$request = $this->request;
 		$domain = cfg('domain');
@@ -26,8 +26,9 @@ class MainRouter extends Router {
 			StaticServer::route($this, '/~favicon/**', path('/app/public/~favicon'));
 		}
 		ImgServer::route($this);
-		$this(host: 'admin.'.$domain)?->pipe(Admin\Router::class);
-		$this(host: 'www.'.$domain)?->pipe(Web\Router::class);
-		$this(host: 'api.'.$domain)?->pipe(Api\Router::class);
+		$this(host: 'admin.' . $domain)?->pipe(Admin\Router::class);
+		$this(host: $domain)?->pipe(Web\Router::class);
+		$this(host: 'api.' . $domain)?->pipe(Api\Router::class);
+		$this(host: 'www.' . $domain)->pipe(...Redirect::setup($request->getScheme() . '://' . $domain));
 	}
 }
