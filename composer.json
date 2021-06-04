@@ -13,7 +13,7 @@
 	],
 	"scripts": {
 		"post-root-package-install": [
-			"php post-install-script.php"
+			"php ./install/post-install-script.php"
 		],
 		"post-create-project-cmd": [
 			"rmdir .my-repos"
