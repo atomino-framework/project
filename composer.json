@@ -16,7 +16,7 @@
 			"php ./install/post-install-script.php"
 		],
 		"post-create-project-cmd": [
-			"rmdir .my-repos"
+			"php ./install/post-install-finish-script.php"
 		]
 	},
 	"repositories": [

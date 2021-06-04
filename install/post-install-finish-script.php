@@ -56,3 +56,4 @@ unlink($projectRoot.'/install/vhost.conf.template');
 unlink($projectRoot.'/install/atomino.ini.template');
 unlink($projectRoot . '/install/post-install-finish-script.php');
 rmdir($projectRoot . '/install');
+rmdir($projectRoot . '/.my-repos');
