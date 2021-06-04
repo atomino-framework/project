@@ -16,9 +16,9 @@ if (strtolower($c) === 'y') {
 	$domain = readline();
 	$domain = $domain ?: $appName . '.localhost';
 
-	echo "database host (" . 'locahost' . "): ";
+	echo "database host (" . 'localhost' . "): ";
 	$databaseHost = readline();
-	$databaseHost = $databaseHost ?: 'locahost';
+	$databaseHost = $databaseHost ?: 'localhost';
 
 	echo "database (" . $appName . "): ";
 	$database = readline();
