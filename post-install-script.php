@@ -33,7 +33,7 @@ rename(__DIR__ . '/install/vhost', __DIR__ . '/app/etc/vhost');
 unlink(__DIR__ . '/.gitignore');
 rename(__DIR__ . '/install/.gitignore.dist', __DIR__ . '/.gitignore');
 
-file_put_contents('1', __DIR__ . '/app/var/version');
+file_put_contents(__DIR__ . '/app/var/version', '1');
 
 $composer = json_decode(file_get_contents(__DIR__ . '/composer.json'), true);
 
