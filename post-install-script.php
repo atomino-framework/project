@@ -42,12 +42,12 @@ unset($composer['description']);
 unset($composer['repositories']);
 $composer['name'] = basename(__DIR__);
 
-file_get_contents(__DIR__ . '/composer.json', json_encode($composer, JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_UNESCAPED_UNICODE));
+file_get_contents(__DIR__ . '/composer.json', json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 
 $package = json_decode(file_get_contents(__DIR__ . '/package.json'), true);
 $package['author'] = '';
 $package['name'] = basename(__DIR__);
-file_get_contents(__DIR__ . '/package.json.json', json_encode($package, JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_UNESCAPED_UNICODE));
+file_get_contents(__DIR__ . '/package.json.json', json_encode($package, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 
-unlink(__DIR__.'/install');
-unlink(__DIR__.'/post-install-script.php');
+unlink(__DIR__ . '/install');
+unlink(__DIR__ . '/post-install-script.php');
