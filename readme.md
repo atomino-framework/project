@@ -10,16 +10,19 @@
 ## Create project
 
 - `composer create-project atomino/project your-project -s dev`
-- `cd your-project`
+- Configurate your project within the installer
 - create a mysql database for your project (utf-8)
-- open `atomino.ini` with a text editor and set all the config values
-  - database connection
-  - your applications domain (eg: my-project.localhost)
-  - secret for image creator
-  - secret for jwt token generator
 - `./atomino mig:init` - initializes the migrations
 - `./atomino mig:migrate` - do the first migration (users)
 - `./atomino publish` - copy all assets to the public folder
+
+## Manual configuration  
+
+- open `atomino.ini` with a text editor and set all the config values
+  - set up your database connection
+  - set the application's domain (eg: my-project.localhost)
+  - set the secret for image creator
+  - set the secret for jwt token generator
 
 ## Run and test with the built-in server
 
@@ -30,8 +33,7 @@
   - you should see a json
 
 # Setup apache
-
-- open `app/etc/vhost/vhost.conf` and set the domain, and root variables
+- open `app/etc/vhost/vhost.conf` and set the `domain`, and `root` variables
 - include the `app/etc/vhost/vhost.conf` in your httpd.conf or apache2.conf file
 - reload/restart apache
 - open the `http://www.my-project.localhost` you just set in your browser
