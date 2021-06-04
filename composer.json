@@ -41,7 +41,8 @@
 		"atomino/mercury": "dev-master",
 		"ext-json": "*",
 		"ext-gd": "*",
-		"ext-curl": "*"
+		"ext-curl": "*",
+		"ext-readline": "*"
 	},
 	"autoload": {
 		"psr-4": {

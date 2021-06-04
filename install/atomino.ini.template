@@ -1,0 +1,7 @@
+domain = "{{domain}}"
+database.dsn = "mysql:host={{databaseHost}};dbname={{database}};user={{databaseUser}};password={{databasePassword}};charset=UTF8"
+auth.jwt-key = "{{jwtSecret}}"
+attachment-entity-plugin.img.secret = "{{imgSecret}}"
+debug = false
+rlogtail.connection = "unix-socket"
+rlogtail.address:path = "rlogtail.sock"
