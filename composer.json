@@ -15,7 +15,7 @@
 		"post-root-package-install": [
 			"php post-install-script.php"
 		]
-	}
+	},
 	"repositories": [
 		{
 			"type": "path",
