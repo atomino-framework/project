@@ -3,7 +3,5 @@ atomino.ini
 atomino.env
 vendor
 node_modules
-app
+app/**/*
 **/.DS_store
-composer.lock
-package-lock.json
