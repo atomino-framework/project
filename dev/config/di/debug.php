@@ -4,7 +4,8 @@ use Atomino\Bundle\Debug\Debug;
 use Atomino\Bundle\Debug\RLogTail;
 use Atomino\Bundle\Debug\Alert;
 use Atomino\Bundle\Debug\Telegram;
-use Atomino\Debug\ErrorHandler;
+use Atomino\Bundle\Debug\ErrorHandler;
+
 use Atomino\Debug\ErrorHandlerInterface;
 use function Atomino\cfg;
 use function Atomino\dic;
