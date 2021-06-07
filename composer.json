@@ -36,7 +36,7 @@
 		"atomino/bundle-comment": "dev-master",
 		"atomino/bundle-attachment": "dev-master",
 		"atomino/bundle-json": "dev-master",
-		"atomino/bundle-rlogtail": "dev-master",
+		"atomino/bundle-debug": "dev-master",
 		"atomino/carbon": "dev-master",
 		"atomino/mercury": "dev-master",
 		"ext-json": "*",

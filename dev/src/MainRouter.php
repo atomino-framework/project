@@ -7,6 +7,7 @@ use Atomino\Mercury\Responder\Redirect;
 use Atomino\Mercury\Router\Router;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Contracts\EventDispatcher\Event;
+use function Atomino\alert;
 use function Atomino\cfg;
 use function Atomino\path;
 
@@ -18,7 +19,7 @@ class MainRouter extends Router {
 
 		$request = $this->request;
 		$domain = cfg('domain');
-
+		
 		if (!str_starts_with($request->server->get("SERVER_SOFTWARE", "other"), "Apache/")) {
 			AttachmentServer::route($this);
 			StaticServer::route($this, '/~web/**', path('/app/public/~web'));
