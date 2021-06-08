@@ -22,7 +22,7 @@ class MainRouter extends Router {
 			StaticServer::route($this, '/~admin/**', path('/app/public/~admin'));
 			StaticServer::route($this, '/~favicon/**', path('/app/public/~favicon'));
 		}
-		
+
 		ImgServer::route($this);
 		$this(host: 'admin.' . $domain)?->pipe(Admin\Router::class);
 		$this(host: $domain)?->pipe(Web\Router::class);
