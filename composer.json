@@ -35,7 +35,7 @@
 		"atomino/bundle-authorize": "dev-master",
 		"atomino/bundle-comment": "dev-master",
 		"atomino/bundle-attachment": "dev-master",
-		"atomino/bundle-json": "dev-master",
+		"atomino/bundle-typed-field": "dev-master",
 		"atomino/bundle-debug": "dev-master",
 		"atomino/carbon": "dev-master",
 		"atomino/mercury": "dev-master",
