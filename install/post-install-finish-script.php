@@ -40,6 +40,7 @@ if (strtolower($c) === 'y') {
 		"{{databasePassword}}"=>$databasePassword,
 		"{{jwtSecret}}"=>uniqid(),
 		"{{imgSecret}}"=>uniqid(),
+		"{{appid}}"=>uniqid(),
 	];
 
 	$vhost = file_get_contents($projectRoot.'/install/vhost.conf.template');

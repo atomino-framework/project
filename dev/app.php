@@ -1,6 +1,11 @@
-<?php use Atomino\Core\Application;
+<?php
 
-require getenv("@root")."/vendor/autoload.php";
-Application::setConfig(include getenv('@config'));
-Application::setDI(include getenv('@di'));
-Application::boot();
+use Atomino\Core\Application;
+use function Atomino\path;
+
+require __DIR__ . "/../vendor/autoload.php";
+Application::boot(
+	Application::createConfigLoader(path("/dev/config/*.php"), path("atomino.ini")),
+	Application::createDILoader(path("/dev/di/*.php")),
+	path('/app/etc/')
+);

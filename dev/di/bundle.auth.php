@@ -11,6 +11,6 @@ use function Atomino\dic;
 use function DI\factory;
 
 return [
-	JwtConfiguration::class => factory(fn() => Configuration::forSymmetricSigner(new Sha256(), InMemory::plainText(cfg("auth.jwt-key")))),
+	JwtConfiguration::class => factory(fn() => Configuration::forSymmetricSigner(new Sha256(), InMemory::plainText(cfg("bundle.authentication.jwt-key")))),
 	Authenticator::class    => factory(fn() => new Authenticator(dic()->get(JwtConfiguration::class), User::class)),
 ];

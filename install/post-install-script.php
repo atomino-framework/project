@@ -25,9 +25,7 @@ struct([
 		'etc'    => ['.gitkeep'],
 		'public' => ['.gitkeep'],
 		'tmp'    => ['.gitkeep'],
-		'var'    => [
-			'log' => ['.gitkeep'],
-		],
+		'log' => ['.gitkeep'],
 	],
 ], $projectRoot);
 
@@ -37,7 +35,7 @@ rename($projectRoot . '/install/atomino.ini', $projectRoot . '/atomino.ini');
 rename($projectRoot . '/install/vhost', $projectRoot . '/app/etc/vhost');
 unlink($projectRoot . '/.gitignore');
 rename($projectRoot . '/install/.gitignore.dist', $projectRoot . '/.gitignore');
-file_put_contents($projectRoot . '/app/var/version', '1');
+file_put_contents($projectRoot . '/app/etc/version', '1');
 
 // modify the composer.json
 
@@ -45,7 +43,7 @@ $composer = json_decode(file_get_contents($projectRoot . '/composer.json'), true
 $composer['authors'] = [];
 unset($composer['description']);
 unset($composer['repositories']);
-$composer['name'] = basename($projectRoot);
+$composer['name'] = basename($projectRoot).'/project';
 file_put_contents($projectRoot . '/composer.json', json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 
 // modify the package.json

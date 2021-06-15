@@ -1,9 +1,9 @@
 <VirtualHost *:80>
 	Define domain "{{domain}}"
 	Define root "{{root}}/"
+	Define mode "dev"
 
-	SetEnv "@config" "${root}dev/config/config.php"
-	SetEnv "@di" "${root}dev/config/di.php"
+	SetEnv "@mode" "${mode}"
 	SetEnv "@root" "${root}"
 
     include "${root}app/etc/vhost/vars.conf"

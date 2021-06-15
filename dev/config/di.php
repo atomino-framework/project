@@ -1,1 +1,0 @@
-<?php return \Atomino\loadcfgset(...glob(__DIR__ . "/di/*.php"));
