@@ -3,29 +3,43 @@
 use Application\Database\DefaultConnection;
 use Atomino\Carbon\Cache;
 use Atomino\Carbon\Database\Connection;
+use Atomino\Core\ApplicationConfig;
+use Atomino\Core\BootLoader;
 use Atomino\Core\Cli\CliRunner;
+use DI\Container;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
-use function Atomino\cfg;
-use function DI\{factory, get};
+use function DI\{decorate, factory, get};
 
 
 class_alias(Connection::class, DefaultConnection::class);
 
 return [
-	DefaultConnection::class => factory(fn() => new Connection(
-		cfg("carbon.database.dsn"),
-		new ArrayAdapter(),
-		new Logger("SQL", [new RotatingFileHandler(cfg("carbon.database.sql-log-file"))])
+	Cache::class             => get(ArrayAdapter::class),
+	//	Cache::class => factory(fn(ApplicationConfig $config) => new MemcachedAdapter(
+	//		MemcachedAdapter::createConnection(			$config("carbon.entity.memcached.server")),
+	//		$config('appid').'.'.$config("carbon.entity.memcached.namespace"),
+	//		$config("carbon.entity.memcached.lifetime"))),
+	DefaultConnection::class => factory(fn(ApplicationConfig $cfg, Container $c) => new Connection(
+		$cfg("carbon.database.dsn"),
+		$c->get(Cache::class),
+		new Logger("SQL", [new RotatingFileHandler($cfg("carbon.database.sql-log-file"))])
 	)),
-	Cache::class     => \DI\get(ArrayAdapter::class), //new MemcachedAdapter(MemcachedAdapter::createConnection(cfg("carbon.entity.memcached.server")), cfg('appid).'.'.cfg("carbon.entity.memcached.namespace"), cfg("carbon.entity.memcached.lifetime"))
-	CliRunner::class => \DI\decorate(fn(CliRunner $runner) => $runner
-		->addCliModule(new \Atomino\Carbon\Cli\Entity(["namespace" => cfg("carbon.entity.namespace")]))
-		->addCliModule(new \Atomino\Carbon\Database\Cli\Migrator([
-			"connection" => get(cfg("carbon.database.migration-config.connection")),
-			"location"   => cfg("carbon.database.migration-config.location"),
-			"storage"    => cfg("carbon.database.migration-config.storage"),
-		]))
+	CliRunner::class         => decorate(function (CliRunner $runner, Container $c) {
+		$cfg = $c->get(ApplicationConfig::class);
+		return $runner
+			->addCliModule($c->make(\Atomino\Carbon\Cli\Entity::class, ['config' => new \Atomino\Core\Config\Config([
+				"namespace" => $cfg('carbon.entity.namespace'),
+			])]))
+			->addCliModule($c->make(\Atomino\Carbon\Database\Cli\Migrator::class, ['config' => new \Atomino\Core\Config\Config([
+				"connection" => $c->get($cfg("carbon.database.migration-config.connection")),
+				"location"   => $cfg("carbon.database.migration-config.location"),
+				"storage"    => $cfg("carbon.database.migration-config.storage"),
+			])]))
+			;
+	}),
+	BootLoader::class        => decorate(fn(BootLoader $bootLoader, Container $c) => $bootLoader
+		->add(fn(Container $c) => \Atomino\Carbon\Model::setContainer($c))
 	),
 ];

@@ -42,7 +42,8 @@
 		"ext-json": "*",
 		"ext-gd": "*",
 		"ext-curl": "*",
-		"ext-readline": "*"
+		"ext-readline": "*",
+		"ext-sockets": "*"
 	},
 	"autoload": {
 		"psr-4": {

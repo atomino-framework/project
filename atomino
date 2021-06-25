@@ -1,6 +1,0 @@
-#!/usr/bin/env php
-<?php
-ob_get_length() && ob_clean();
-putenv("@root=" . __DIR__);
-putenv("@mode=dev");
-include __DIR__ . "/dev/app.php";

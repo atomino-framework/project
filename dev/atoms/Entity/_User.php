@@ -17,6 +17,7 @@ use Atomino\Carbon\Attributes\RequiredField;
  * #[RequiredField('guid', StringField::class)]
  * @property-read \Atomino\Bundle\Attachment\Collection $avatar
  * @method static \Atomino\Carbon\Database\Finder\Comparison attachments($isin = null)
+ * @method static \Atomino\Carbon\Database\Finder\Comparison bossId($isin = null)
  * @method static \Atomino\Carbon\Database\Finder\Comparison created($isin = null)
  * @property-read \DateTime|null $created
  * @method static \Atomino\Carbon\Database\Finder\Comparison email($isin = null)
@@ -44,6 +45,8 @@ use Atomino\Carbon\Attributes\RequiredField;
 #[RequiredField("email", \Atomino\Carbon\Field\StringField::class)]
 #[RequiredField("password", \Atomino\Carbon\Field\StringField::class)]
 #[Field("attachments", \Atomino\Carbon\Field\JsonField::class)]
+#[Validator("bossId", \Symfony\Component\Validator\Constraints\PositiveOrZero::class)]
+#[Field("bossId", \Atomino\Carbon\Field\IntField::class)]
 #[Field("created", \Atomino\Carbon\Field\DateTimeField::class)]
 #[Validator("email", \Symfony\Component\Validator\Constraints\Length::class, ['max'=>255])]
 #[Field("email", \Atomino\Carbon\Field\StringField::class)]
@@ -75,6 +78,8 @@ abstract class _User extends Entity implements \Atomino\Bundle\Attachment\Attach
 	const ROLE_MODERATOR_ROBOT = "moderator_robot";
 	const attachments = 'attachments';
 	protected array $attachments = [];
+	const bossId = 'bossId';
+	public int|null $bossId = null;
 	const created = 'created';
 	protected \DateTime|null $created = null;
 	protected function getCreated():\DateTime|null{ return $this->created;}

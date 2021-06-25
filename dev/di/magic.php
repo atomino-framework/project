@@ -1,15 +1,20 @@
 <?php
 
+use Atomino\Core\ApplicationConfig;
 use Atomino\Core\Cli\CliRunner;
-use function Atomino\cfg;
+use Atomino\Core\Config\Config;
+use Atomino\Magic\Cli\Magic;
+use DI\Container;
 use function DI\decorate;
 
 return [
-	CliRunner::class => decorate(fn(CliRunner $runner) => $runner
-		->addCliModule(new \Atomino\Magic\Cli\Magic([
-			"entity-namespace" => cfg("carbon.entity.namespace"),
-			"api-namespace"    => cfg("magic.api-namespace"),
-			"descriptor-path"  => cfg("magic.descriptor-path"),
-		]))
-	),
+	CliRunner::class => decorate(function (CliRunner $runner, Container $c) {
+		$cfg = $c->get(ApplicationConfig::class);
+		return $runner
+			->addCliModule($c->make(Magic::class, ['config' => new Config([
+				"entity-namespace" => $cfg("carbon.entity.namespace"),
+				"api-namespace"    => $cfg("magic.api-namespace"),
+				"descriptor-path"  => $cfg("magic.descriptor-path"),
+			])]));
+	}),
 ];

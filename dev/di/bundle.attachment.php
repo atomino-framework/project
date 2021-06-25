@@ -1,19 +1,14 @@
 <?php
 
-use Atomino\Bundle\Attachment\Config;
+use Atomino\Bundle\Attachment\AttachmentConfig;
 use Atomino\Bundle\Attachment\Img\ImgCreatorInterface;
-use function Atomino\cfg;
+use Atomino\Core\ApplicationConfig;
+use Atomino\Core\Config\Config;
 use function DI\factory;
+use function DI\get;
+
 
 return [
-	ImgCreatorInterface::class => \DI\get(\Atomino\cfg("bundle.attachment.img.creator")),
-	Config::class              => factory(fn() => new Config(
-		cfg("bundle.attachment.path"),
-		cfg("bundle.attachment.url"),
-		cfg("bundle.attachment.restricted-access-postfix"),
-		cfg("bundle.attachment.img.url"),
-		cfg("bundle.attachment.img.path"),
-		cfg("bundle.attachment.img.secret"),
-		cfg("bundle.attachment.img.jpeg-quality"),
-	)),
+	ImgCreatorInterface::class => factory(fn(ApplicationConfig $cfg) => get($cfg("bundle.attachment.img.creator"))),
+	AttachmentConfig::class    => factory(fn(ApplicationConfig $cfg) => new Config($cfg("bundle.attachment"))),
 ];

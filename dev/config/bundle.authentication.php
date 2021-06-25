@@ -1,3 +1,3 @@
 <?php
 
-return ["bundle" => ["authentication" => ["jwt-key" => ""]]];
+return ["bundle.authentication.jwt-key" => ""];

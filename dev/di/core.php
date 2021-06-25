@@ -1,17 +1,15 @@
 <?php
 
-use Atomino\Core\Cli\CliRunner;
-use Atomino\Core\Runner\CliRunnerInterface;
-use Atomino\Core\Runner\HttpRunnerInterface;
-use Composer\Autoload\ClassLoader;
-use function Atomino\path;
-use function DI\{decorate, factory, get};
+use Atomino\Core\Application;
+use Atomino\Core\BootLoader;
+use Atomino\Core\BootLoaderInterface;
+use Atomino\Core\PathResolverInterface;
+use Atomino\Neutrons\CodeFinder;
+use Atomino\Neutrons\CodeFinderInterface;
+use function DI\{factory, get};
 
 return [
-	ClassLoader::class         => factory(fn() => include path("vendor/autoload.php")),
-	CliRunnerInterface::class  => get(CliRunner::class),
-	HttpRunnerInterface::class => get(\Atomino\Mercury\HttpRunner::class),
-	CliRunner::class => decorate(fn(CliRunner $runner) => $runner
-		->addCliModule(new \Atomino\Core\CoreCli())
-	),
+	CodeFinderInterface::class => factory(fn(PathResolverInterface $pathResolver) => new CodeFinder(require $pathResolver->path('vendor/autoload.php'))),
+	BootLoaderInterface::class => get(BootLoader::class),
+	PathResolverInterface::class => factory(fn()=> Application::instance())
 ];

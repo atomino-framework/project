@@ -1,5 +1,8 @@
 <?php namespace Application;
 
+use Atomino\Bundle\Attachment\AttachmentConfig;
+use Atomino\Core\ApplicationConfig;
+use Atomino\Core\PathResolverInterface;
 use Atomino\Mercury\FileServer\StaticServer;
 use Atomino\Mercury\Plugins\Attachment\AttachmentServer;
 use Atomino\Mercury\Plugins\Attachment\ImgServer;
@@ -10,23 +13,28 @@ use function Atomino\path;
 
 class MainRouter extends Router {
 
-	public function __construct() { }
+	private string $domain;
+
+	public function __construct(
+		ApplicationConfig $config,
+		private AttachmentConfig $attachmentConfig,
+		private PathResolverInterface $pathResolver
+	) {
+		$this->domain = $config('domain');
+	}
 
 	protected function route(): void {
-
-		$domain = cfg('domain');
-
 		if (!str_starts_with($this->request->server->get("SERVER_SOFTWARE", "other"), "Apache/")) {
-			AttachmentServer::route($this);
-			StaticServer::route($this, '/~web/**', path('/app/public/~web'));
-			StaticServer::route($this, '/~admin/**', path('/app/public/~admin'));
-			StaticServer::route($this, '/~favicon/**', path('/app/public/~favicon'));
+			AttachmentServer::route($this, $this->attachmentConfig);
+			StaticServer::route($this, '/~web/**', $this->pathResolver->path('app/public/~web'));
+			StaticServer::route($this, '/~admin/**', $this->pathResolver->path('app/public/~admin'));
+			StaticServer::route($this, '/~favicon/**', $this->pathResolver->path('app/public/~favicon'));
 		}
+		ImgServer::route($this, $this->attachmentConfig);
 
-		ImgServer::route($this);
-		$this(host: 'admin.' . $domain)?->pipe(Admin\Router::class);
-		$this(host: $domain)?->pipe(Web\Router::class);
-		$this(host: 'api.' . $domain)?->pipe(Api\Router::class);
-		$this(host: 'www.' . $domain)->pipe(...Redirect::setup($this->request->getScheme() . '://' . $domain.(($port = $this->request->getPort()) !==80 ? ':'.$port : '')));
+		$this(host: 'admin.' . $this->domain)?->pipe(Admin\Router::class);
+		$this(host: $this->domain)?->pipe(Web\Router::class);
+		$this(host: 'api.' . $this->domain)?->pipe(Api\Router::class);
+		$this(host: 'www.' . $this->domain)?->pipe(...Redirect::setup($this->request->getScheme() . '://' . $this->domain . (($port = $this->request->getPort()) !== 80 ? ':' . $port : '')));
 	}
 }
