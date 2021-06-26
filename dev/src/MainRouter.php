@@ -3,12 +3,15 @@
 use Atomino\Bundle\Attachment\AttachmentConfig;
 use Atomino\Core\ApplicationConfig;
 use Atomino\Core\PathResolverInterface;
+use Atomino\Core\Runner\HttpRunnerInterface;
 use Atomino\Mercury\FileServer\StaticServer;
+use Atomino\Mercury\HttpRunner;
 use Atomino\Mercury\Plugins\Attachment\AttachmentServer;
 use Atomino\Mercury\Plugins\Attachment\ImgServer;
 use Atomino\Mercury\Responder\Redirect;
 use Atomino\Mercury\Router\Router;
 use function Atomino\cfg;
+use function Atomino\debug;
 use function Atomino\path;
 
 class MainRouter extends Router {
@@ -31,6 +34,8 @@ class MainRouter extends Router {
 			StaticServer::route($this, '/~favicon/**', $this->pathResolver->path('app/public/~favicon'));
 		}
 		ImgServer::route($this, $this->attachmentConfig);
+
+		debug($this->request,HttpRunner::DEBUG_CHANNEL_HTTP_REQUEST);
 
 		$this(host: 'admin.' . $this->domain)?->pipe(Admin\Router::class);
 		$this(host: $this->domain)?->pipe(Web\Router::class);

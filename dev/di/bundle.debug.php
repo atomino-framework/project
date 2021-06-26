@@ -7,6 +7,7 @@ use Atomino\Bundle\Debug\ChannelFormatter\SqlErrorChannelFormatter;
 use Atomino\Bundle\Debug\ChannelFormatter\UserChannelFormatter;
 use Atomino\Bundle\Debug\CliDebugFormatter;
 use Atomino\Bundle\Debug\DebugLogger;
+use Atomino\Bundle\Debug\ErrorHandler;
 use Atomino\Bundle\Debug\HttpHandler;
 use Atomino\Carbon\Database\Connection;
 use Atomino\Core\ApplicationConfig;
@@ -28,13 +29,17 @@ return [
 			Connection::DEBUG_CHANNEL_SQL_ERROR       => new SqlErrorChannelFormatter(),
 			CliRunner::DEBUG_CHANNEL_CLI_REQUEST      => new CliRequestChannelFormatter(),
 			HttpRunner::DEBUG_CHANNEL_HTTP_REQUEST    => new HttpRequestChannelFormatter(),
+			ErrorHandler::DEBUG_CHANNEL_ERROR    => new UserChannelFormatter(),
+			ErrorHandler::DEBUG_CHANNEL_TRACE    => new UserChannelFormatter(),
+			ErrorHandler::DEBUG_CHANNEL_EXCEPTION    => new UserChannelFormatter(),
 		]));
 		$logger = new Logger('', [$handler]);
 		return new DebugLogger($logger);
 	}),
 	BootLoader::class            => decorate(function (BootLoader $bootLoader, Container $c) {
 		return $bootLoader
-			->add(fn(Container $c) => DebugProxy::setDebugHandler($c->get(DebugHandlerInterface::class)))//->add(fn(Container $c) => $c->get(ErrorHandler::class)->register())
+			->add(fn(Container $c) => DebugProxy::setDebugHandler($c->get(DebugHandlerInterface::class)))
+			->add(fn(Container $c) => $c->get(ErrorHandler::class)->register())
 			;
 	}
 	),

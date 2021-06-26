@@ -1,14 +1,12 @@
 {
 	"name": "atomino/project",
-	"description": "atomino project",
+	"description": "atomino project boilerplate",
+	"type": "project",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Gergely Laborci",
 			"email": "gergely@laborci.hu"
-		},
-		{
-			"name": "Balázs Láng",
-			"email": "balazs.lang@outlook.de"
 		}
 	],
 	"scripts": {
