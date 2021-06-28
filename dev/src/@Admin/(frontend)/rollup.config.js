@@ -11,6 +11,8 @@ import scss from 'rollup-plugin-scss';
 //import postcss from 'rollup-plugin-postcss';
 import json from "@rollup/plugin-json";
 
+let root = "../../../../";
+
 let rollup = {
 	verbump: function (filename) {
 		return {
@@ -28,7 +30,7 @@ let rollup = {
 			plugins: [
 				typescript({check: false}),
 				//typescript({sourceMap: !production, target: "es6",tsconfig:false}),
-				rollup.verbump("app/var/version"),
+				rollup.verbump(root+"app/etc/version"),
 				svelte({
 					emitCss: true,
 					compilerOptions: {
@@ -54,7 +56,7 @@ let rollup = {
 const production = !process.env.ROLLUP_WATCH;
 
 
-export default [
-	rollup.compiler('dev/src/@Admin/(frontend)/index.ts', production ? 'dev/assets/~admin' : 'app/public/~admin', 'index.js', 'index.css', production),
-	rollup.compiler('dev/src/@Web/(frontend)/index.ts', production ? 'dev/assets/~web' : 'app/public/~web', 'index.js', 'index.css', production)
-];
+export default
+	rollup.compiler(
+		'src/index.ts',
+		production ? root+'dev/assets/~admin' : root+'app/public/~admin', 'index.js', 'index.css', production)

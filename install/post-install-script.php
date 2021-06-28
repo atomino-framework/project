@@ -46,13 +46,6 @@ unset($composer['repositories']);
 $composer['name'] = basename($projectRoot).'/project';
 file_put_contents($projectRoot . '/composer.json', json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 
-// modify the package.json
-
-$package = json_decode(file_get_contents($projectRoot . '/package.json'), true);
-$package['author'] = '';
-$package['name'] = basename($projectRoot);
-file_put_contents($projectRoot . '/package.json', json_encode($package, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
-
 // remove installer
 
 unlink($projectRoot . '/install/post-install-script.php');
