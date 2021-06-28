@@ -1,10 +1,7 @@
 <VirtualHost *:80>
 	Define domain "{{domain}}"
 	Define root "{{root}}/"
-	Define mode "dev"
-
-	SetEnv "@mode" "${mode}"
-	SetEnv "@root" "${root}"
+	Define app.index "bin/prod.php"
 
     include "${root}app/etc/vhost/vars.conf"
     include "${root}app/etc/vhost/app.conf"

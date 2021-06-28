@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use function Atomino\debug;
+use function DI\create;
 
 
 class Test extends Command {
@@ -30,7 +31,7 @@ class Test extends Command {
 		debug(false);
 		debug(null);
 		debug(['a', 'b' => $user, 'c']);
+		debug("Helo", "lófasz");
 		return 1;
 	}
-
 }

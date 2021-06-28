@@ -13,6 +13,7 @@ use Atomino\Carbon\Plugins\Authorize\Authorizable;
 use Atomino\Carbon\Plugins\Created\Created;
 use Atomino\Carbon\Plugins\Guid\Guid;
 use Atomino\Carbon\Plugins\Updated\Updated;
+use Symfony\Component\HttpFoundation\Request;
 use function Atomino\path;
 
 #[Modelify(\Application\Database\DefaultConnection::class, 'user', true)]
@@ -26,6 +27,7 @@ use function Atomino\path;
 #[Authenticable('email')]
 #[Authorizable('group', ['edit', 'moderate', 'social', 'comment', 'moderator_robot'])]
 class User extends _User implements CommenterInterface {
+
 
 	const GROUPS = [
 		self::group__visitor   => [self::ROLE_SOCIAL],

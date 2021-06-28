@@ -9,7 +9,7 @@ require __DIR__ . "/../vendor/autoload.php";
 new Application(
 	__DIR__ . "/../dev/di/*.php",
 	__DIR__ . "/../app/etc/CompiledContainer.php",
-	Application::MODE_DEV,
+	Application::MODE_PROD,
 	__DIR__ . "/..",
 	BootLoaderInterface::class,
 	HttpRunnerInterface::class
