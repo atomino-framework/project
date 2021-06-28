@@ -1,9 +1,12 @@
 <?php
 
 use Atomino\Bundle\Debug\ChannelFormatter\CliRequestChannelFormatter;
+use Atomino\Bundle\Debug\ChannelFormatter\ErrorChannelFormatter;
+use Atomino\Bundle\Debug\ChannelFormatter\ExceptionChannelFormatter;
 use Atomino\Bundle\Debug\ChannelFormatter\HttpRequestChannelFormatter;
 use Atomino\Bundle\Debug\ChannelFormatter\SqlChannelFormatter;
 use Atomino\Bundle\Debug\ChannelFormatter\SqlErrorChannelFormatter;
+use Atomino\Bundle\Debug\ChannelFormatter\TraceChannelFormatter;
 use Atomino\Bundle\Debug\ChannelFormatter\UserChannelFormatter;
 use Atomino\Bundle\Debug\CliDebugFormatter;
 use Atomino\Bundle\Debug\DebugLogger;
@@ -29,9 +32,9 @@ return [
 			Connection::DEBUG_CHANNEL_SQL_ERROR       => new SqlErrorChannelFormatter(),
 			CliRunner::DEBUG_CHANNEL_CLI_REQUEST      => new CliRequestChannelFormatter(),
 			HttpRunner::DEBUG_CHANNEL_HTTP_REQUEST    => new HttpRequestChannelFormatter(),
-			ErrorHandler::DEBUG_CHANNEL_ERROR    => new UserChannelFormatter(),
-			ErrorHandler::DEBUG_CHANNEL_TRACE    => new UserChannelFormatter(),
-			ErrorHandler::DEBUG_CHANNEL_EXCEPTION    => new UserChannelFormatter(),
+			ErrorHandler::DEBUG_CHANNEL_ERROR         => new ErrorChannelFormatter(),
+			ErrorHandler::DEBUG_CHANNEL_EXCEPTION     => new ExceptionChannelFormatter(),
+			ErrorHandler::DEBUG_CHANNEL_TRACE         => new TraceChannelFormatter(),
 		]));
 		$logger = new Logger('', [$handler]);
 		return new DebugLogger($logger);
