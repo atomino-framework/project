@@ -45,11 +45,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Atomino\\Atoms\\": "dev/atoms",
-			"Application\\": "dev/src",
-			"Application\\Web\\": "dev/src/@Web",
-			"Application\\Api\\": "dev/src/@Api",
-			"Application\\Admin\\": "dev/src/@Admin"
+			"Application\\": "src"
 		}
 	}
 }

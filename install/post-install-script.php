@@ -32,10 +32,10 @@ struct([
 // copy / create base files
 
 rename($projectRoot . '/install/atomino.ini', $projectRoot . '/atomino.ini');
-rename($projectRoot . '/install/vhost', $projectRoot . '/app/etc/vhost');
+rename($projectRoot . '/install/vhost', $projectRoot . '/var/vhost');
 unlink($projectRoot . '/.gitignore');
 rename($projectRoot . '/install/.gitignore.dist', $projectRoot . '/.gitignore');
-file_put_contents($projectRoot . '/app/etc/version', '1');
+file_put_contents($projectRoot . '/var/etc/version', '1');
 
 // modify the composer.json
 

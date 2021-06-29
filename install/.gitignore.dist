@@ -3,5 +3,5 @@ atomino.ini
 atomino.env
 vendor
 node_modules
-app/**/*
+var/**/*
 **/.DS_store

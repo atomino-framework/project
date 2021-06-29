@@ -45,7 +45,7 @@ if (strtolower($c) === 'y') {
 
 	$vhost = file_get_contents($projectRoot.'/install/vhost.conf.template');
 	$vhost = strtr($vhost, $translate);
-	file_put_contents($projectRoot.'/app/etc/vhost/vhost.conf', $vhost);
+	file_put_contents($projectRoot.'/var/vhost/vhost.conf', $vhost);
 
 	$ini = file_get_contents($projectRoot.'/install/atomino.ini.template');
 	$ini = strtr($ini, $translate);

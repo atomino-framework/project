@@ -32,8 +32,8 @@
   `php -qS 127.0.0.1:8083 bin/log.php`
 
 # Setup apache
-- open `app/etc/vhost/vhost.conf` and set the `domain`, and `root` variables
-- include the `app/etc/vhost/vhost.conf` in your `httpd.conf` or `apache2.conf` file
+- open `var/vhost/vhost.conf` and set the `domain`, and `root` variables
+- include the `var/vhost/vhost.conf` in your `httpd.conf` or `apache2.conf` file
 - reload/restart apache
 - open the `http://my-project.localhost` you just set in your browser
 
