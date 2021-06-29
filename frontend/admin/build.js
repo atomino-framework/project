@@ -5,7 +5,7 @@ let root = process.cwd() + '/../..';
 
 let path = {
 	public: root + '/var/public',
-	assets: root + '/assets',
+	assets: root + '/assets/public',
 	packagesfolder: process.cwd() + '/node_modules'
 };
 
