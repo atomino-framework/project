@@ -16,6 +16,12 @@
 - `bin/atomino mig:migrate` - do the first migration (users)
 - `bin/atomino publish` - copy all assets to the public folder
 
+## Create var dir
+- `bin/mkvardir.sh`
+
+## Publish
+- `bin/publish.sh` copies `assets/public` to `var/public`
+
 ## Test CLI
 
 - run `bin/atomino` in terminal
@@ -40,24 +46,3 @@
 ## HTTPS
 
 There is a built-in solution for https, but you can setup your vhost as you like.
-
-## Deployment first
-
-- git clone
-- composer install
-- create var folder
-- create vhost
-- publish
-
-## Deployment update
-
-- git fetch
-- git pull
-- composer install
-- clear caches
-- publish
-
-## Publish
-
-- update public from assets
-- touch version
