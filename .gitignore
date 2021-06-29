@@ -1,10 +1,10 @@
-.idea
-atomino.ini
-atomino.env
-vendor
+/.idea
+/atomino.ini
+/atomino.env
+/vendor
 **/node_modules
-var
+/var
 **/.DS_store
 composer.lock
 **/package-lock.json
-.my-repos
+/.my-repos

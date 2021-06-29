@@ -9,6 +9,6 @@ use function DI\get;
 return [
 	CliRunnerInterface::class => get(CliRunner::class),
 	CliRunner::class          => decorate(fn(CliRunner $runner, Container $c) => $runner
-		->addCliModule($c->get(\Atomino\Core\CoreCli::class))
+		->addCliModule($c->get(\Application\Missions\Cli\Common::class))
 	),
 ];

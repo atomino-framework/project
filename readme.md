@@ -40,3 +40,24 @@
 ## HTTPS
 
 There is a built-in solution for https, but you can setup your vhost as you like.
+
+## Deployment first
+
+- git clone
+- composer install
+- create var folder
+- create vhost
+- publish
+
+## Deployment update
+
+- git fetch
+- git pull
+- composer install
+- clear caches
+- publish
+
+## Publish
+
+- update public from assets
+- touch version

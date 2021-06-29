@@ -43,17 +43,12 @@ if (strtolower($c) === 'y') {
 		"{{appid}}"=>uniqid(),
 	];
 
-	$vhost = file_get_contents($projectRoot.'/install/vhost.conf.template');
-	$vhost = strtr($vhost, $translate);
-	file_put_contents($projectRoot.'/var/vhost/vhost.conf', $vhost);
-
 	$ini = file_get_contents($projectRoot.'/install/atomino.ini.template');
 	$ini = strtr($ini, $translate);
 	file_put_contents($projectRoot.'/atomino.ini', $ini);
 
 	echo "\ndone\n";
 }
-unlink($projectRoot.'/install/vhost.conf.template');
 unlink($projectRoot.'/install/atomino.ini.template');
 unlink($projectRoot . '/install/post-install-finish-script.php');
 rmdir($projectRoot . '/install');

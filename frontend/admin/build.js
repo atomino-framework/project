@@ -1,38 +1,33 @@
 import copydir from "copy-dir";
 import fs from "fs";
 
-let root = process.cwd()+'/../..';
-let packagesfolder = process.cwd() + '/node_modules';
-
-let packages = JSON.parse(fs.readFileSync('./package.json'));
+let root = process.cwd() + '/../..';
 
 let path = {
 	public: root + '/var/public',
 	assets: root + '/assets',
+	packagesfolder: process.cwd() + '/node_modules'
 };
 
-fs.mkdirSync(path.assets +'/~fonts', {recursive:true});
+let packages = JSON.parse(fs.readFileSync('./package.json'));
+
+fs.mkdirSync(path.assets + '/~fonts', {recursive: true});
 
 class Jobs {
-	static fontawesome(){
-		if(typeof packages.dependencies['@fortawesome/fontawesome-pro'] !== 'undefined'){
+	static fontawesome() {
+		if (typeof packages.dependencies['@fortawesome/fontawesome-pro'] !== 'undefined') {
 			console.log('copy fontawesome pro to assets');
-			copydir.sync(packagesfolder + "/@fortawesome/fontawesome-pro/webfonts", path.assets + "/~fonts/fontawesome-pro")
+			copydir.sync(path.packagesfolder + "/@fortawesome/fontawesome-pro/webfonts", path.assets + "/~fonts/fontawesome-pro")
 		}
 		console.log('copy fontawesome free to assets');
-		copydir.sync(packagesfolder + "/@fortawesome/fontawesome-free/webfonts", path.assets + "/~fonts/fontawesome-free")
-	}
-
-	static assets() {
-		console.log('copy assets to public');
-		copydir.sync(path.assets, path.public);
+		copydir.sync(path.packagesfolder + "/@fortawesome/fontawesome-free/webfonts", path.assets + "/~fonts/fontawesome-free")
 	}
 
 	static fonts() {
-		for(let pkg in packages.dependencies)if(pkg.startsWith('@fontsource/')){
+		for (let pkg in packages.dependencies) if (pkg.startsWith('@fontsource/')) {
 			let name = pkg.substr('@fontsource/'.length);
-			console.log('copy '+name+" to assets");
-			copydir.sync(packagesfolder + '/@fontsource/' + name + '/files', path.assets + "/~fonts/" + name);
+			console.log('copy ' + name + " to assets");
+			copydir.sync(path.packagesfolder + '/@fontsource/' + name + '/files', path.assets + "/~fonts/" + name);
 		}
 	}
 }

@@ -51,7 +51,7 @@ const production = !process.env.ROLLUP_WATCH;
 
 export default rollup.compiler(
 	root + 'frontend/admin/src/index.ts',
-	production ? root + 'assets/~admin' : root + 'var/public/~admin',
+	production ? root + 'assets/public/~admin' : root + 'var/public/~admin',
 	'index.js',
 	'index.css',
 	production
