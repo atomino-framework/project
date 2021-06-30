@@ -26,7 +26,7 @@ use function DI\{decorate, factory};
 
 return [
 	DebugHandlerInterface::class => factory(function (ApplicationConfig $cfg) {
-		$handler = (new HttpHandler($cfg('debug.url'), $cfg('debug.level')))->setFormatter(new CliDebugFormatter([
+		$handler = (new HttpHandler($cfg('debug.url').':'.$cfg('debug.port'), $cfg('debug.level')))->setFormatter(new CliDebugFormatter([
 			DebugHandlerInterface::DEBUG_CHANNEL_USER => new UserChannelFormatter(),
 			Connection::DEBUG_CHANNEL_SQL             => new SqlChannelFormatter(),
 			Connection::DEBUG_CHANNEL_SQL_ERROR       => new SqlErrorChannelFormatter(),

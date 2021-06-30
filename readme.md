@@ -17,9 +17,11 @@
 - `bin/atomino publish` - copy all assets to the public folder
 
 ## Create var dir
+
 - `bin/mkvardir.sh`
 
 ## Publish
+
 - `bin/publish.sh` copies `assets/public` to `var/public`
 
 ## Test CLI
@@ -29,7 +31,7 @@
 ## Run and test with the built-in server
 
 - run the development server:
-  `php -S 127.0.0.1:8080 bin/dev.php`
+  `php -S 127.0.0.1:8080 bin/http-dev.php` or `bin/dev.sh`
 - open in browser: `http://my-project.localhost:8080`
   - you should see an atom
 - open magic in browser: `http://admin.my-project.localhost:8080`  
@@ -37,9 +39,9 @@
   - pass: `atomino`
 - open in browser: `http://api.my-project.localhost:8080/user/1`
   - you should see a json
-- run the logger server: `php -qS 127.0.0.1:8083 bin/log.php`
+- run the logger server: `php -qS 127.0.0.1:8083 bin/http-log.php` or `bin/log.sh`
 
-# Setup apache
+## Setup apache
 - copy `assets/vhost` to `var`
 - open `var/vhost/vhost.conf` and set the `domain`, and `root` variables
 - include the `var/vhost/vhost.conf` in your `httpd.conf` or `apache2.conf` file
