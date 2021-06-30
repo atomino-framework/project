@@ -3,9 +3,14 @@
 ## Requirements
 
 - php 8.0; gd
-- apache 2.4
 - mysql 8.0
-- composer
+- composer 2
+
+### optional  
+
+- node 15.14.0
+- npm 7.7.6  
+- apache 2.4
 
 ## Create project
 

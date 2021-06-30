@@ -1,3 +1,4 @@
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../";
 git fetch
 git pull
 composer install
