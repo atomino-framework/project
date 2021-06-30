@@ -33,6 +33,7 @@
   - pass: `atomino`
 - open in browser: `http://api.my-project.localhost:8080/user/1`
   - you should see a json
+  - try it with the [Chrome Json Formatter extension](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
 - run the logger server: `php -qS 127.0.0.1:8083 bin/http-log.php` or `bin/log.sh`
 
 ## Setup apache
