@@ -16,7 +16,7 @@ return [
 			"sql-log-file.@path" => "var/log/sql.log",
 			"migration-config"   => [
 				"connection"     => \Application\Database\DefaultConnection::class,
-				"location.@path" => "dev/migrations/",
+				"location.@path" => "migrations/",
 				"storage"        => "__migrations",
 			],
 		],

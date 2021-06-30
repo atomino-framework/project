@@ -22,17 +22,11 @@ use Atomino\Carbon\Plugins\Updated\Updated;
 #[Attachmentable()]
 #[AttachmentCollection(field: 'avatar', maxCount: 1, maxSize: 512 * 1024, mimetype: "/image\/.*/")]
 #[Authenticable('email')]
-#[Authorizable('group', ['edit', 'moderate', 'social', 'comment', 'moderator_robot'])]
-class User extends _User implements CommenterInterface {
-
-
+#[Authorizable('group', ['user', 'moderate', 'edit'])]
+class User extends _User {
 	const GROUPS = [
-		self::group__visitor   => [self::ROLE_SOCIAL],
-		self::group__moderator => [self::ROLE_SOCIAL, self::ROLE_MODERATE],
-		self::group__admin     => [self::ROLE_SOCIAL, self::ROLE_MODERATE, self::ROLE_EDIT],
+		self::group__visitor   => [self::ROLE_USER],
+		self::group__moderator => [self::ROLE_USER, self::ROLE_MODERATE],
+		self::group__admin     => [self::ROLE_USER, self::ROLE_MODERATE, self::ROLE_EDIT],
 	];
-
-	public function canAddComment(): bool { return $this->hasRole(self::ROLE_SOCIAL); }
-	public function canModerateComment(): bool { return $this->hasRole(self::ROLE_MODERATE); }
-	public function canCommentAsBot(): bool { return $this->hasRole(self::ROLE_MODERATE); }
 }

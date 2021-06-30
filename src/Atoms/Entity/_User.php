@@ -68,11 +68,9 @@ abstract class _User extends Entity implements \Atomino\Bundle\Attachment\Attach
 	protected final function __getAvatar(){return $this->getAttachmentCollection("avatar");}
 	use \Atomino\Carbon\Plugins\Authenticate\AuthenticableTrait;
 	use \Atomino\Carbon\Plugins\Authorize\AuthorizableTrait;
-	const ROLE_EDIT = "edit";
+	const ROLE_USER = "user";
 	const ROLE_MODERATE = "moderate";
-	const ROLE_SOCIAL = "social";
-	const ROLE_COMMENT = "comment";
-	const ROLE_MODERATOR_ROBOT = "moderator_robot";
+	const ROLE_EDIT = "edit";
 	const attachments = 'attachments';
 	protected array $attachments = [];
 	const created = 'created';
