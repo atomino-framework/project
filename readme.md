@@ -12,21 +12,10 @@
 - `composer create-project atomino/project your-project -s dev`
 - Configurate your project within the installer
 - create a mysql database for your project (utf-8)
+- `bin/mkvardir.sh` - creates the `var` directory structure
 - `bin/atomino mig:init` - initializes the migrations
 - `bin/atomino mig:migrate` - do the first migration (users)
-- `bin/atomino publish` - copy all assets to the public folder
-
-## Create var dir
-
-- `bin/mkvardir.sh`
-
-## Publish
-
-- `bin/publish.sh` copies `assets/public` to `var/public`
-
-## Test CLI
-
-- run `bin/atomino` in terminal
+- `bin/publish.sh` - copy all assets to the public folder
 
 ## Run and test with the built-in server
 
