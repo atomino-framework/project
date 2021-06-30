@@ -11,7 +11,7 @@ use Atomino\Carbon\Attributes\RequiredField;
 
 
 /**
- * @method static Application\Atoms\EntityFinder\_User search( Filter $filter = null )
+ * @method static \Application\Atoms\EntityFinder\_User search( Filter $filter = null )
  * #[Immutable( 'guid', true )]
  * #[Protect( 'guid', true, false )]
  * #[RequiredField('guid', StringField::class)]

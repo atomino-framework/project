@@ -3,6 +3,6 @@
 return [
 	"magic" => [
 		"api-namespace"         => 'Application\Admin\Magic',
-		"descriptor-path.@path" => 'dev/src/@Admin/(frontend)/descriptor/',
+		"descriptor-path.@path" => 'frontend/admin/src/descriptor/',
 	],
 ];
