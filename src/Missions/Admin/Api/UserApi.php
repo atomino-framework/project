@@ -11,11 +11,6 @@ use Atomino\Carbon\Entity;
 #[Gold(User::class, 5, true)]
 class UserApi extends GoldApi {
 
-	protected function addViews(): void {
-		parent::addViews();
-		$this->addView(new GoldView('unba', '20nál kisebb', fn() => Filter::where(User::id()->lt(20))));
-	}
-
 	protected function quickSearch(string $search): Filter {
 		return Filter::where(User::name()->instring($search))
 		             ->or(User::email()->instring($search))
@@ -32,6 +27,13 @@ class UserApi extends GoldApi {
 	protected function selectMap(Entity $item): string {
 		/** @var User $item */
 		return $item->name;
+	}
+
+	protected function listExport(Entity $item): array {
+		/** @var User $item */
+		$data = parent::listExport($item);
+		$data['avatar'] = $item->avatar->first?->image->crop(64,64)->webp;
+		return $data;
 	}
 
 	protected function formExport(Entity $item): array {
@@ -53,9 +55,9 @@ class UserApi extends GoldApi {
 		return null;
 	}
 
-	#[GoldView('banned', '20nál nagyobb userek')]
-	protected function bannedView(): Filter|null {
-		return Filter::where(User::id()->gt(20));
+	#[GoldView('banned', 'Administrators')]
+	protected function administratorsView(): Filter|null {
+		return Filter::where(User::group(USER::group__admin));
 	}
 
 	#[GoldSorting('name', 'név')]
@@ -67,12 +69,4 @@ class UserApi extends GoldApi {
 		}
 	}
 
-	#[GoldSorting('email', 'e-mail')]
-	protected function emailSorting(bool $asc) {
-		if ($asc) {
-			return [[User::email, "asc"]];
-		} else {
-			return [[User::email, "desc"], [User::name, "asc"]];
-		}
-	}
 }

@@ -18,22 +18,13 @@ export default class UserList extends List {
 			active: true,
 			subtitle: item.email,
 			properties: [
-				{label: 'email', value: item.email},
+				{label: 'updated', value: item.updated},
 				{label: 'created', value: item.created}
 			],
 			//image: "https://picsum.photos/600/200",
-			avatar: "https://picsum.photos/96/96",
+			avatar: item.avatar,
 			click: () => this.open(item),
-			buttons: [
-				{
-					label: FaIcon.s('user'),
-					action: () => null
-				},
-				{
-					label: "open",
-					action: () => this.open(item)
-				}
-			]
+			buttons: []
 		}
 	}
 }

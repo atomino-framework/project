@@ -20,13 +20,12 @@ use Atomino\Carbon\Plugins\Updated\Updated;
 #[Created()]
 #[Updated()]
 #[Attachmentable()]
-#[AttachmentCollection(field: 'avatar', maxCount: 1, maxSize: 512 * 1024, mimetype: "/image\/.*/")]
+#[AttachmentCollection(field: 'avatar', maxCount: 1, maxSize: 1024 * 1024, mimetype: "/image\/.*/")]
 #[Authenticable('email')]
-#[Authorizable('group', ['user', 'moderate', 'edit'])]
+#[Authorizable('group', ['visitor', 'administrator'])]
 class User extends _User {
 	const GROUPS = [
-		self::group__visitor   => [self::ROLE_USER],
-		self::group__moderator => [self::ROLE_USER, self::ROLE_MODERATE],
-		self::group__admin     => [self::ROLE_USER, self::ROLE_MODERATE, self::ROLE_EDIT],
+		self::group__visitor   => [self::ROLE_VISITOR],
+		self::group__admin     => [self::ROLE_VISITOR, self::ROLE_ADMINISTRATOR],
 	];
 }
