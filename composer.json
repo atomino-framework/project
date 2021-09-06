@@ -22,7 +22,7 @@
 			"type": "path",
 			"url": ".my-repos/*"
 		}
-    },
+    ],
     "require": {
         "atomino/core": "dev-master",
         "atomino/gold": "dev-master",
