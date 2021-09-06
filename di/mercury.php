@@ -3,6 +3,8 @@
 use Atomino\Core\ApplicationConfig;
 use Atomino\Core\Config\Config;
 use Atomino\Mercury\Pipeline\Pipeline;
+use Atomino\Mercury\RateLimiter;
+use Atomino\Mercury\RateLimiterInterface;
 use Atomino\Mercury\Responder\Smart\Cache\CacheInterface;
 use Atomino\Mercury\Responder\Smart\SmartResponderConfig;
 use DI\Container;
@@ -16,6 +18,7 @@ use function DI\factory;
 
 
 return [
+	RateLimiterInterface::class => factory(fn(ApplicationConfig $cfg) => new RateLimiter(new FilesystemAdapter('', 0, $cfg("mercury.ratelimiter.path")))),
 	Request::class              => factory(fn() => Request::createFromGlobals()),
 	SessionInterface::class     => factory(fn() => new Session(new NativeSessionStorage(["cookie_httponly" => true]))),
 	CacheInterface::class       => factory(fn(ApplicationConfig $cfg) => new FilesystemAdapter('', 60, $cfg("mercury.middlewares.cache.path"))),
