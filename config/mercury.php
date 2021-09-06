@@ -10,7 +10,6 @@ return [
 			"twig.namespaces"             => [
 				'web.@path'   => 'src/Missions/Web/@templates/',
 				'admin.@path' => 'src/Missions/Admin/@templates/',
-				'gold.@path' => 'src/Missions/Gold/@templates/',
 			],
 		],
 		"middlewares"            => ["cache.path.@path" => "var/tmp/cache.middleware/"],

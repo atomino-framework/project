@@ -11,9 +11,16 @@ class AuthApi extends Api{
 
 	public function __construct(private SessionAuthenticator $authenticator){ }
 
-	#[Route( self::GET, '/' )]
+	#[Route( self::POST, '/get' )]
 	public function get(){
-		return User::getAuthenticated() ?? false;
+		$user = User::getAuthenticated();
+		if(is_null($user)) return null;
+		$roles = $user->getRoles();
+		$name = $user->name;
+		return [
+			"name"=>$name,
+			"roles"=>$roles
+		];
 	}
 
 	#[Route( self::POST, '/login' )]
@@ -28,13 +35,7 @@ class AuthApi extends Api{
 		return true;
 	}
 
-	#[Route( self::GET, '/request-autologin' )]
-	#[Auth]
-	public function get_requestAutologin(){
-		$this->authenticator->deployRefreshToken($this->getResponse());
-	}
-
-	#[Route( self::GET, '/logout' )]
+	#[Route( self::POST, '/logout' )]
 	#[Auth]
 	public function logout(){
 		$this->authenticator->logout($this->getResponse());

@@ -1,0 +1,62 @@
+{% extends('@smartpage/smartpage.twig') %}
+
+{% block head %}
+    {{ parent() }}
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: #0e2015;
+        }
+        div.wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            margin: 0 auto;
+            width: 256px;
+        }
+        div.logo {
+            width: 256px;
+            height: 256px;
+            position: relative;
+        }
+        svg {
+            position: absolute;
+        }
+        svg#logo {
+            top: 96px;
+            left: 96px
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="wrapper">
+        <div class="logo">
+            <svg id="logo" width="64" height="64" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1,0,0,1,-367,-242)">
+                <g transform="matrix(0.666667,0,0,0.666667,133,91.3333)">
+                    <circle cx="399" cy="274" r="48" style="fill:rgb(111,32,142);"/>
+                </g>
+                <path d="M407.119,286.293L407.119,277.073L392.881,277.073L392.881,286.293L385.762,286.293L385.762,261.707L414.238,261.707L414.238,286.293L407.119,286.293ZM407.119,270.927L407.119,267.854L392.881,267.854L392.881,270.927L407.119,270.927Z" style="fill:white;fill-rule:nonzero;"/>
+            </g>
+        </svg>
+            <svg id="electron" width="256" height="256" viewBox="0 0 255 256">
+                <circle r=8 fill=#8DFF00>
+                    <animateMotion dur="6.5s" repeatCount="indefinite" path="M 64, 128 a 64,64 0 1,1 128,0 a 64,64 0 1,1 -128,0"/>
+                </circle>
+                <circle r=8 fill=#00C5FF>
+                    <animateMotion dur="3s" repeatCount="indefinite" path="M 64, 128 a 64,64 0 1,1 128,0 a 64,64 0 1,1 -128,0"/>
+                </circle>
+                <circle r=8 fill=#FF0600>
+                    <animateMotion dur="2s" repeatCount="indefinite" path="M 64, 128 a 64,64 0 1,1 128,0 a 64,64 0 1,1 -128,0"/>
+                </circle>
+            </svg>
+        </div>
+    </div>
+
+{% endblock %}
+
+
