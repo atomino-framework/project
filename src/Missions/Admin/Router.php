@@ -1,7 +1,7 @@
 <?php namespace Application\Missions\Admin;
 
-use Application\Missions\Gold\Api\AuthApi;
-use Application\Missions\Gold\Api\UserApi;
+use Application\Missions\Admin\Api\AuthApi;
+use Application\Missions\Admin\Api\UserApi;
 use Application\Services\ActualEventService;
 use Atomino\Bundle\Authenticate\SessionAuthenticator;
 use Atomino\Mercury\Responder\Smart\Cache\Middleware\Cache;

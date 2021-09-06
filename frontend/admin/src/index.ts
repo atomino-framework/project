@@ -18,7 +18,6 @@ let authApi = new AuthApi();
 
 pageManager.add(new DashboardPage());
 listManager.add(new UserList());
-pageManager.add(new FormPage(new UserForm(1)))
 
 let menu = [
 	new MenuItem("Dashboard", FaIcon.s("dice-d6"), () => {pageManager.add(new DashboardPage())}),

@@ -27,7 +27,7 @@ let env = {
 	path: {
 		src: cwd + '/src',
 		versionFile: root + '/var/etc/version',
-		out: production ? root + '/assets/public/~gold' : root + '/var/public/~gold',
+		out: production ? root + '/assets/public/~admin' : root + '/var/public/~admin',
 		fonts: root + '/assets/public/~fonts',
 		entry: cwd + '/src/index.ts',
 		nm: cwd + '/node_modules'

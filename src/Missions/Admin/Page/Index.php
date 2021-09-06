@@ -5,10 +5,10 @@ use Atomino\Mercury\Responder\Smart\SmartResponder;
 use Atomino\Mercury\Responder\Smart\Attributes\{Cache, Args, CSS, JS, Init};
 use Symfony\Component\HttpFoundation\Response;
 
-#[Init( 'gold', 'index.twig', "mobile.twig")]
+#[Init( 'admin', 'index.twig', "mobile.twig")]
 #[Args( title: 'Atomino Gold' )]
-#[JS('/~gold/index.js')]
-#[CSS('/~gold/index.css')]
+#[JS('/~admin/index.js')]
+#[CSS('/~admin/index.css')]
 #[Cache( 0 )]
 class Index extends SmartResponder{
 	public array $users;
