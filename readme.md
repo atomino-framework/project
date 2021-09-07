@@ -6,7 +6,7 @@
 - mysql 8.0
 - composer 2
 
-### optional  
+### Optional  
 
 - node 15.14.0
 - npm 7.7.6  
@@ -15,31 +15,42 @@
 ## Create project
 
 - `composer create-project atomino/project your-project -s dev`
-- Configurate your project within the installer
-- create a mysql database for your project (utf-8)
+- Configure your project within the installer
+- Create a `mysql` database for your project (utf-8)
 - `bin/mkvardir.sh` - creates the `var` directory structure
 - `bin/atomino mig:init` - initializes the migrations
 - `bin/atomino mig:migrate` - do the first migration (users)
-- `bin/publish.sh` - copy all assets to the public folder
+- `bin/publish.sh` - copy all files from `assets/public` to the `var/public` folder
+
+## Fonts 
+
+(npm required)
+
+There is a built-in solution for `fontawesome` and all `@fontsource` fonts to handle.
+
+- `cd frontend/admin` (or any other frontend directory)
+- `node build.js fonts` - this copies all `@fontsource` from `node_moduels` to `assets`
+- `node build.js fontawesome` - this copies `fontawesome` (pro/free) from `node_moduels` to `assets`
+- `bin/publish.sh`
 
 ## Run and test with the built-in server
 
-- run the development server:
-  `php -S 127.0.0.1:8080 bin/http-dev.php` or `bin/dev.sh`
-- open in browser: `http://my-project.localhost:8080`
-  - you should see an atom
-- open magic in browser: `http://admin.my-project.localhost:8080`  
+- Run the logger server: `bin/log.sh`
+- Run the development server: `bin/dev.sh`
+- Open website in browser: `http://my-project.localhost:8080`
+  - You should see an atom
+- Open gold admin in the browser: `http://admin.my-project.localhost:8080`  
   - user: `atomino@atomino.atom`
   - pass: `atomino`
-- open in browser: `http://api.my-project.localhost:8080/user/1`
-  - you should see a json
-  - try it with the [Chrome Json Formatter extension](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
-- run the logger server: `php -qS 127.0.0.1:8083 bin/http-log.php` or `bin/log.sh`
+- Test the api in a browser: `http://api.my-project.localhost:8080/user/1`
+  - You should see a json
+  - Try it with the [Chrome Json Formatter extension](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
 
 ## Setup apache
-- copy `assets/vhost` to `var`
-- open `var/vhost/vhost.conf` and set the `domain`, and `root` variables
-- include the `var/vhost/vhost.conf` in your `httpd.conf` or `apache2.conf` file
-- reload/restart apache
-- open the `http://my-project.localhost` in your browser
-- there is a built-in solution for https, but you can setup your vhost as you like.
+- Run `bin/vhost`, 
+  - It copies `assets/vhost` folder to `var/vhost`
+  - and Updates the `root` and `domain` variables in the `vhost.conf` file based on the `atomino.ini`
+- Include the `var/vhost/vhost.conf` in your `httpd.conf` or `apache2.conf` file
+- Reload / restart apache
+- Open the `http://my-project.localhost` in your browser
+- There is a built-in solution for https, but you can setup your vhost as you like.
