@@ -22,6 +22,19 @@
 - `bin/atomino mig:migrate` - do the first migration (users)
 - `bin/publish.sh` - copy all files from `assets/public` to the `var/public` folder
 
+## Frontend
+
+This project uses svelte as frontend framework. Frontend project can be found in the `frontend` folder.
+These are separate projects - each of those has it's own root folder - embedded into your application.
+
+- You should install the dependencies:
+  - `cd frontend/admin`
+  - `npm install`
+- Build your code
+  - `npm run dev` - development build with watch, compiles directly into the `var/public` folder
+  - or `npm run build` - production build, it compiles into the `assets/public` folder
+    - to make it work you need to publish is to `var/public`
+
 ## Fonts 
 
 (npm required)
