@@ -18,6 +18,7 @@
 - Configure your project within the installer
 - Create a `mysql` database for your project (utf-8)
 - `bin/mkvardir.sh` - creates the `var` directory structure
+- give permissions to the webserver to write the whole `var` directory  
 - `bin/atomino mig:init` - initializes the migrations
 - `bin/atomino mig:migrate` - do the first migration (users)
 - `bin/publish.sh` - copy all files from `assets/public` to the `var/public` folder
