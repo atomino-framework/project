@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Page from "gold/lib/page";
-	export let page:Page;
+	import AbstractPage from "gold-admin/app/abstract-page";
+	export let page:AbstractPage;
 	let title = page.$title;
 </script>
 

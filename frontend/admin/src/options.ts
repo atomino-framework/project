@@ -1,3 +1,4 @@
-import FaIcon from "gold/lib/fa-icon";
-import goldOptions from "gold/lib/options";
-import goldEntityOptions from "gold-entity/lib/options";
+import FaIcon from "gold-admin/fa-icon";
+import options from "gold-admin/options"
+
+options.app.title = "My Admin";

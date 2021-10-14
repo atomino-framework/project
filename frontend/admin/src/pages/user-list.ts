@@ -1,12 +1,12 @@
-import Api from "gold-entity/lib/list/api";
-import List, {button, list, buttons} from "gold-entity/lib/list/list";
-import FaIcon from "gold/lib/fa-icon";
+import ListApi from "gold-admin/list/list-api";
+import List, {button, list, buttons} from "gold-admin/list/list";
+import FaIcon from "gold-admin/fa-icon";
 import UserForm from "./user-form";
 
 @list(
 	"Felhasználók",
 	FaIcon.s("users"),
-	new Api("/gold/user"),
+	new ListApi("/gold/user"),
 	() => UserForm
 )
 @button(buttons.new)
