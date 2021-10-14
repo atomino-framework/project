@@ -2,7 +2,11 @@
 
 ## Requirements
 
-- php 8.0; gd
+- php 8.0;
+- ext-gd
+- ext-curl
+- ext-mbstring
+- php-mysql
 - mysql 8.0
 - composer 2
 
