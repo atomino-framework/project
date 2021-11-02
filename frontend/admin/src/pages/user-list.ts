@@ -1,10 +1,9 @@
-import ListApi from "gold-admin/list/list-api";
-import List, {button, list, buttons} from "gold-admin/list/list";
 import FaIcon from "gold-admin/fa-icon";
+import List, {button, buttons, list} from "gold-admin/list/list";
 import UserForm from "./user-form";
 
 @list(
-	"Felhasználók",
+	"Users",
 	FaIcon.s("users"),
 	"/gold/user/list",
 	UserForm
@@ -23,7 +22,7 @@ export default class UserList extends List {
 			],
 			//image: "https://picsum.photos/600/200",
 			avatar: item.avatar,
-			click: () => this.open(item),
+			click: () => this.open(item.id),
 			buttons: []
 		}
 	}

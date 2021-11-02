@@ -18,7 +18,7 @@ class UserApi extends GoldApi {
 			;
 	}
 
-	protected function entityMapFilter(string $search): Filter|null {
+	protected function entityMapFilter(string $search, int|null $contextId = null): Filter|null {
 		return Filter::where(User::name()->instring($search))
 		             ->or(User::email()->instring($search))
 			;
