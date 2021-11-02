@@ -18,13 +18,13 @@ class UserApi extends GoldApi {
 			;
 	}
 
-	protected function selectFilter(string $search): Filter|null {
+	protected function entityMapFilter(string $search): Filter|null {
 		return Filter::where(User::name()->instring($search))
 		             ->or(User::email()->instring($search))
 			;
 	}
 
-	protected function selectMap(Entity $item): string {
+	protected function entityMapLabel(Entity $item): string {
 		/** @var User $item */
 		return $item->name;
 	}
@@ -55,12 +55,12 @@ class UserApi extends GoldApi {
 		return null;
 	}
 
-	#[GoldView('banned', 'Administrators')]
+	#[GoldView('admins', 'Administrators')]
 	protected function administratorsView(): Filter|null {
-		return Filter::where(User::group(USER::group__admin));
+		return Filter::where(User::group(User::group__admin));
 	}
 
-	#[GoldSorting('name', 'név')]
+	#[GoldSorting('name', 'name')]
 	protected function nameSorting(bool $asc) {
 		if ($asc) {
 			return [[User::name, "asc"]];

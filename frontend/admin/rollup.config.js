@@ -22,12 +22,16 @@ export default {
 		format: 'iife',
 		name: 'app',
 	},
+	onwarn: (warning, handler) => {
+		if(warning.code === "PLUGIN_WARNING") return;
+		handler(warning);
+	},
 	plugins: [
 		styles({mode: 'emit', url: false}),
 		typescript({check: false}),
 		alias({entries: {
-			'src': rollup.src
-		}}),
+				'src': rollup.src
+			}}),
 		json(),
 		svelte({
 			extensions: [".svelte"],

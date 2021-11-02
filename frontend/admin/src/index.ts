@@ -18,9 +18,7 @@ let authApi = new AuthApi("/gold/auth", ()=>{
 
 let menu = [
 	new MenuItem("Dashboard", FaIcon.s("dice-d6"), () => {pageManager.add(new DashboardPage())}),
-	new MenuItem("Entities", FaIcon.s("users"), [
-		new MenuItem("User list", FaIcon.s("users"), () => {listManager.add(new UserList())}),
-	]),
+	new MenuItem("Users", FaIcon.s("users"), () => {listManager.add(new UserList())}),
 ]
 
 window.addEventListener('load', () => new App({target: document.body, props: {pageManager, listManager, menu, authApi}}));

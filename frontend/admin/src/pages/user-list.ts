@@ -6,8 +6,8 @@ import UserForm from "./user-form";
 @list(
 	"Felhasználók",
 	FaIcon.s("users"),
-	new ListApi("/gold/user"),
-	() => UserForm
+	"/gold/user/list",
+	UserForm
 )
 @button(buttons.new)
 export default class UserList extends List {

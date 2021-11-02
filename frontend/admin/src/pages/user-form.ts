@@ -8,14 +8,13 @@ import FaIcon from "gold-admin/fa-icon";
 import UserList from "./user-list";
 
 @form(
-	FaIcon.l("user"),
-	new FormApi("/gold/user"),
-	() => UserList
+	FaIcon.s("user"),
+	"/gold/user"
 )
 @button(buttons.save)
 @button(buttons.delete)
 @button(buttons.reload)
-@button(attachmentButton(new AttachmentApi('/gold/user'), {"avatar":"Avatar"}))
+@button(attachmentButton('/gold/user/attachemnts', {"avatar":"Avatar"}))
 
 export default class UserForm extends Form {
 
@@ -23,10 +22,10 @@ export default class UserForm extends Form {
 
 	build() {
 		this.addSection()
-			.addControl(new controls.string("name", "név"))
-			.addControl(new controls.string("email", "e-mail"))
-			.addControl(new controls.password('password'))
-			.addControl(new controls.select("group", ).Options([{value: 'admin', label: "admin"}, {value:"visitor", label:'visitor'}]))
+			.addControl(controls.string("name"))
+			.addControl(controls.string("email"))
+			.addControl(controls.password('password'))
+			.addControl(controls.select("group", ).setOptions(['admin', 'visitor']))
 	}
 
 }
