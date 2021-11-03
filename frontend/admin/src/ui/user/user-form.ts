@@ -5,19 +5,19 @@ import Form, {button, buttons, form} from "gold-admin/form/form";
 
 @form(
 	FaIcon.s("user"),
-	"/gold/user",
+	"/api/user/item",
 	(item, id)=> id === null ? "new user" : item.name
 )
 @button(buttons.save)
 @button(buttons.delete)
 @button(buttons.reload)
-@button(attachmentButton('/gold/user/attachemnts', {"avatar":"Avatar"}))
+@button(attachmentButton('/api/user/attachments', {"avatar":"Avatar"}))
 export default class UserForm extends Form {
 	build() {
 		this.addSection()
 			.addControl(controls.string("name"))
 			.addControl(controls.string("email"))
 			.addControl(controls.password('password'))
-			.addControl(controls.select("group", ).setOptions(['admin', 'visitor']))
+			.addControl(controls.select("group", ).setApi("/api/user/get-groups"))
 	}
 }

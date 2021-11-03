@@ -5,7 +5,7 @@ import UserForm from "./user-form";
 @list(
 	"Users",
 	FaIcon.s("users"),
-	"/gold/user/list",
+	"/api/user/list",
 	UserForm
 )
 @button(buttons.new)
