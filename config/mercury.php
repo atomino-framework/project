@@ -3,6 +3,11 @@
 return [
 	"mercury" => [
 		"ratelimiter.path.@path" => "var/tmp/ratelimiter",
+		"session"=>[
+			"cookie_httponly" => true,
+			"cookie_domain"=>"",
+			"name"=>"_SID"
+		],
 		"smart-responder"        => [
 			"frontend-version-file.@path" => "var/etc/version",
 			"twig.cache-path.@path"       => "var/tmp/cache.smartresponder",

@@ -2,10 +2,7 @@
 
 use Application\Entity\User;
 use Atomino\Gold\Gold;
-use Atomino\Gold\GoldApi;
 use Atomino\Gold\Goldify;
-use Atomino\Gold\GoldSorting;
-use Atomino\Gold\GoldView;
 use Atomino\Carbon\Database\Finder\Filter;
 use Atomino\Carbon\Entity;
 use Atomino\Gold\ItemApi;
@@ -13,23 +10,36 @@ use Atomino\Gold\ListApi;
 use Atomino\Gold\ListSorting;
 use Atomino\Gold\ListView;
 use Atomino\Mercury\Responder\Api\Api;
-use Atomino\Mercury\Responder\Api\Attributes\Route;
 
-#[Goldify(User::class)]
+#[Goldify(User::class, User::ROLE_ADMIN)]
 class UserApi extends Gold {
 
 	protected function listApi(): ListApi {
 		return new class($this, 50, true) extends ListApi {
-			public function views(): array { return [
-			]; }
+			public function views(): array {
+				return [
+					new ListView("Everybody", fn() => null),
+					new ListView("Administrators", fn() => Filter::where(User::group(User::group__admin))),
+					new ListView("Visitors", fn() => Filter::where(User::group(User::group__visitor))),
+				];
+			}
 			public function sortings(): array {
 				return [
 					new ListSorting("name", fn($asc) => $asc ? [[User::name, "asc"]] : [[User::name, "desc"]]),
 				];
 			}
+			public function export(Entity|User $item): array {
+				$data = parent::export($item);
+				unset($data['password']);
+				$data['avatar'] = $item->avatar->first?->image->crop(64, 64)->png;
+				return $data;
+			}
+
+			public function searchFilter(array $filter): Filter|null {
+				return Filter::where(isset($filter['email']) && $filter['email'] ? User::email()->instring($filter['email']) : null);
+			}
 			public function quickSearchFilter(string $search): Filter {
 				return Filter::where(User::name()->instring($search))
-				             ->or(User::email()->instring($search))
 				             ->or(User::id($search))
 				;
 			}
@@ -38,6 +48,9 @@ class UserApi extends Gold {
 
 	protected function itemApi(): ItemApi {
 		return new class($this) extends ItemApi {
+			protected function options(Entity|null $item): array|null {
+				return ["groups" => User::model()->getField(User::group)->getOptions()];
+			}
 			protected function export(Entity|User $item): array {
 				$data = parent::export($item);
 				$data['password'] = "";
@@ -51,13 +64,9 @@ class UserApi extends Gold {
 		};
 	}
 
+	// you can add any custom api calls on top of the base calls
 	protected function customApi(): Api|null {
-		return new class() extends Api {
-			#[Route("POST", "get-groups")]
-			public function POST_getGroups() {
-				return User::model()->getField("group")->getOptions();
-			}
-		};
+		return new class ( ) extends Api { };
 	}
 
 }

@@ -9,7 +9,7 @@ use function Atomino\debug;
 #[Args( title: 'Atomino' )]
 #[Cache( 0 )]
 class Index extends SmartResponder{
-	public array $users;
+	public string $hello = "Hello Atomino!";
 	protected function prepare(Response $response){	}
 }
 

@@ -1,7 +1,6 @@
 <?php namespace Application\Entity;
 
 use Application\Atoms\Entity\_User;
-use Atomino\Bundle\Comment\CommenterInterface;
 use Atomino\Carbon\Attributes\Modelify;
 use Atomino\Carbon\Attributes\Protect;
 use Atomino\Carbon\Attributes\Validator;
@@ -22,10 +21,10 @@ use Atomino\Carbon\Plugins\Updated\Updated;
 #[Attachmentable()]
 #[AttachmentCollection(field: 'avatar', maxCount: 1, maxSize: 1024 * 1024, mimetype: "/image\/.*/")]
 #[Authenticable('email')]
-#[Authorizable('group', ['visitor', 'administrator'])]
+#[Authorizable('group', ['admin', 'visitor'])]
 class User extends _User {
 	const GROUPS = [
-		self::group__visitor   => [self::ROLE_VISITOR],
-		self::group__admin     => [self::ROLE_VISITOR, self::ROLE_ADMINISTRATOR],
+		self::group__admin   => [self::ROLE_ADMIN, self::ROLE_VISITOR],
+		self::group__visitor => [self::ROLE_VISITOR],
 	];
 }
