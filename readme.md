@@ -40,15 +40,14 @@ These are separate projects - each of those has it's own root folder - embedded 
   - or `npm run build` - production build, it compiles into the `assets/public` folder
     - to make it work you need to publish is to `var/public`
 
-## Fonts 
+## Fonts
 
 (npm required)
 
 There is a built-in solution for `fontawesome` and all `@fontsource` fonts to handle.
 
 - `cd frontend/admin` (or any other frontend directory)
-- `node build.js fonts` - this copies all `@fontsource` from `node_moduels` to `assets`
-- `node build.js fontawesome` - this copies `fontawesome` (pro/free) from `node_moduels` to `assets`
+- `npm run fonts` - this copies all `@fontsource` and `fontawesome` (pro/free)  from `node_moduels` to `assets`
 - `bin/publish.sh`
 
 ## Run and test with the built-in server
@@ -65,7 +64,7 @@ There is a built-in solution for `fontawesome` and all `@fontsource` fonts to ha
   - Try it with the [Chrome Json Formatter extension](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
 
 ## Setup apache
-- Run `bin/vhost`, 
+- Run `bin/vhost`,
   - It copies `assets/vhost` folder to `var/vhost`
   - and Updates the `root` and `domain` variables in the `vhost.conf` file based on the `atomino.ini`
 - Include the `var/vhost/vhost.conf` in your `httpd.conf` or `apache2.conf` file
