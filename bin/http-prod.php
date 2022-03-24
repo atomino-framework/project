@@ -7,7 +7,7 @@ use Atomino\Core\Runner\HttpRunnerInterface;
 require __DIR__ . "/../vendor/autoload.php";
 
 new Application(
-	__DIR__ . "/../{di,di/prod}/*.php",
+	__DIR__ . "/../etc/{di,di/prod}/*.php",
 	__DIR__ . "/../var/etc/CompiledContainer.php",
 	Application::MODE_PROD,
 	__DIR__ . "/..",

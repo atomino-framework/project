@@ -10,8 +10,8 @@ let path = {
 	root: root,
 	public: {
 		dev: root + '/var/public',
-		prod: root + '/assets/public',
-		fonts: root + '/assets/public/~fonts',
+		prod: root + '/etc/public',
+		fonts: root + '/etc/public/~fonts',
 	}
 };
 

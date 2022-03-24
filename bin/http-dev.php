@@ -8,7 +8,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 
 new Application(
-	__DIR__ . "/../{di,di/dev}/*.php",
+	__DIR__ . "/../etc/{di,di/dev}/*.php",
 	null,
 	Application::MODE_DEV,
 	__DIR__ . "/..",

@@ -5,7 +5,7 @@ mkdir($projectRoot.'/.my-repos');
 
 // copy / create base files
 
-copy($projectRoot . '/assets/atomino.ini', $projectRoot . '/atomino.ini');
+copy($projectRoot . '/etc/atomino.ini', $projectRoot . '/atomino.ini');
 unlink($projectRoot . '/.gitignore');
 rename($projectRoot . '/install/.gitignore.dist', $projectRoot . '/.gitignore');
 

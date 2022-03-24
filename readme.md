@@ -25,7 +25,7 @@
 - give permissions to the webserver to write the whole `var` directory  
 - `bin/atomino mig:init` - initializes the migrations
 - `bin/atomino mig:migrate` - do the first migration (users)
-- `bin/publish.sh` - copy all files from `assets/public` to the `var/public` folder
+- `bin/publish.sh` - copy all files from `etc/public` to the `var/public` folder
 
 ## Frontend
 
@@ -37,7 +37,7 @@ These are separate projects - each of those has it's own root folder - embedded 
   - `npm install`
 - Build your code
   - `npm run dev` - development build with watch, compiles directly into the `var/public` folder
-  - or `npm run build` - production build, it compiles into the `assets/public` folder
+  - or `npm run build` - production build, it compiles into the `etc/public` folder
     - to make it work you need to publish is to `var/public`
 
 ## Fonts
@@ -47,7 +47,7 @@ These are separate projects - each of those has it's own root folder - embedded 
 There is a built-in solution for `fontawesome` and all `@fontsource` fonts to handle.
 
 - `cd frontend/admin` (or any other frontend directory)
-- `npm run fonts` - this copies all `@fontsource` and `fontawesome` (pro/free)  from `node_moduels` to `assets`
+- `npm run fonts` - this copies all `@fontsource` and `fontawesome` (pro/free)  from `node_moduels` to `etc/public`
 - `bin/publish.sh`
 
 ## Run and test with the built-in server
@@ -65,7 +65,7 @@ There is a built-in solution for `fontawesome` and all `@fontsource` fonts to ha
 
 ## Setup apache
 - Run `bin/vhost`,
-  - It copies `assets/vhost` folder to `var/vhost`
+  - It copies `etc/vhost` folder to `var/vhost`
   - and Updates the `root` and `domain` variables in the `vhost.conf` file based on the `atomino.ini`
 - Include the `var/vhost/vhost.conf` in your `httpd.conf` or `apache2.conf` file
 - Reload / restart apache

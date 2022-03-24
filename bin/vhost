@@ -1,7 +1,9 @@
 #!/usr/bin/env php
 <?php
 
-$source = __DIR__.'/../assets/vhost';
+if(!isset($argv[1])) $argv[1] = 'vhost';
+
+$source = __DIR__.'/../etc/'.$argv[1];
 $target = __DIR__.'/../var/vhost';
 
 $ini = parse_ini_file(__DIR__.'/../atomino.ini');
