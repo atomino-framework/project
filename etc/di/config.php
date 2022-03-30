@@ -20,7 +20,7 @@ return [
 		(new Builder(
 			(new Loader(new IniLoader(), new JsonLoader(), new PhpLoader()))
 				->load(...[...Application::instance()->filterConfigFiles(glob(__DIR__ . "/../config/*.php")), __DIR__ . "/../../atomino.ini"])(),
-			new PathPlugin(__DIR__ . "/.."),
+			new PathPlugin(__DIR__ . "/../.."),
 			new EnvPlugin()
 		))(),
 ];
