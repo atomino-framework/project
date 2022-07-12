@@ -36,8 +36,6 @@ class MainRouter extends Router {
 		}
 		ImgServer::route($this, $this->attachmentConfig);
 
-		debug($this->request,HttpRunner::DEBUG_CHANNEL_HTTP_REQUEST);
-
 		$this(host: 'admin.' . $this->domain)?->pipe(Admin\Router::class);
 		$this(host: $this->domain)?->pipe(Web\Router::class);
 		$this(host: 'api.' . $this->domain)?->pipe(Api\Router::class);

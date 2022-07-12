@@ -1,0 +1,4 @@
+#!/bin/bash
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../";
+DOMAIN=`php ./bin/php/env-loader.php ATOMINO_HTTP_LOG_PORT`;
+php -qS 127.0.0.1:${1-$PORT} bin/php/http-log.php

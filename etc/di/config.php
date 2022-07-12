@@ -8,6 +8,8 @@ use Atomino\Core\Config\Loader;
 use Atomino\Core\Config\Loader\IniLoader;
 use Atomino\Core\Config\Loader\JsonLoader;
 use Atomino\Core\Config\Loader\PhpLoader;
+use Atomino\Core\Config\Loader\Plugin\EnvBoolPlugin;
+use Atomino\Core\Config\Loader\Plugin\EnvNumPlugin;
 use Atomino\Core\Config\Loader\Plugin\EnvPlugin;
 use Atomino\Core\Config\Loader\Plugin\PathPlugin;
 use DI\Container;
@@ -19,8 +21,16 @@ return [
 	'app-cfg'                =>
 		(new Builder(
 			(new Loader(new IniLoader(), new JsonLoader(), new PhpLoader()))
-				->load(...[...Application::instance()->filterConfigFiles(glob(__DIR__ . "/../config/*.php")), __DIR__ . "/../../atomino.ini"])(),
-			new PathPlugin(__DIR__ . "/../.."),
-			new EnvPlugin()
+				->load(...[
+					...(new \Atomino\Core\Config\Filter(glob(__DIR__ . "/../config/*.php")))
+						->exclude(Application::instance()->isDev() ? "@prod" : "@dev")
+						->localOverride()
+						->files(),
+					__DIR__ . "/../atomino.ini",
+				])(),
+			new PathPlugin(getenv("ATOMINO_ROOT")),
+			new EnvPlugin(),
+			new EnvBoolPlugin(),
+			new EnvNumPlugin()
 		))(),
 ];

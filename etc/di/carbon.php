@@ -12,7 +12,6 @@ use Monolog\Logger;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use function DI\{decorate, factory, get};
 
-
 class_alias(Connection::class, DefaultConnection::class);
 
 return [

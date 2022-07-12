@@ -43,13 +43,13 @@ if (strtolower($c) === 'y') {
 		"{{appid}}"=>uniqid(),
 	];
 
-	$ini = file_get_contents($projectRoot.'/install/atomino.ini.template');
+	$ini = file_get_contents($projectRoot.'/install/.env.template');
 	$ini = strtr($ini, $translate);
-	file_put_contents($projectRoot.'/atomino.ini', $ini);
+	file_put_contents($projectRoot.'/etc/.env', $ini);
 
 	echo "\ndone\n";
 }
-unlink($projectRoot.'/install/atomino.ini.template');
+unlink($projectRoot.'/install/.env.template');
 unlink($projectRoot . '/install/post-install-finish-script.php');
 rmdir($projectRoot . '/install');
 rmdir($projectRoot . '/.my-repos');

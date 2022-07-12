@@ -1,0 +1,2 @@
+#!/bin/bash
+ATOMINO_DEV_MODE=YES php bin/php/cli.php "$@";

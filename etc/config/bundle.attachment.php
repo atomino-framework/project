@@ -10,7 +10,7 @@ return [
 			"url"          => "/~img",
 			"path.@path"   => "var/tmp/img/",
 			"creator"      => \Atomino\Bundle\Attachment\Img\ImgCreatorGD2::class,
-			"secret"       => "",
+			"secret"       => getenv("ATOMINO_ATTACHMENT_IMAGE_SECRET"),
 		],
 	],
 ];

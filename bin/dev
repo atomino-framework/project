@@ -1,0 +1,6 @@
+#!/bin/bash
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../";
+DOMAIN=`php ./bin/php/env-loader.php ATOMINO_DOMAIN`;
+PORT=`php ./bin/php/env-loader.php ATOMINO_DEV_SERVER_PORT`;
+echo "listening: http://${DOMAIN}:${PORT}"
+ATOMINO_DEV_MODE=YES php -qS 127.0.0.1:$PORT bin/php/http.php

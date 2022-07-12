@@ -1,8 +1,0 @@
-appid = "{{appid}}"
-domain = "{{domain}}"
-carbon.database.dsn = "mysql:host={{databaseHost}};dbname={{database}};user={{databaseUser}};password={{databasePassword}};charset=UTF8"
-bundle.authentication.jwt-key = "{{jwtSecret}}"
-bundle.attachment.img.secret = "{{imgSecret}}"
-debug.url = "127.0.0.1"
-debug.port = "8083"
-debug.level = 100

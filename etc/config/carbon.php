@@ -12,7 +12,7 @@ return [
 			],
 		],
 		"database" => [
-			"dsn"                => "mysql:host=;dbname=;user=;password=;charset=UTF8",
+			"dsn"                => getenv("ATOMINO_DATABASE_DSN"),
 			"sql-log-file.@path" => "var/log/sql.log",
 			"migration-config"   => [
 				"connection"     => \Application\Database\DefaultConnection::class,

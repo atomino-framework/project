@@ -1,22 +1,5 @@
-#!/usr/bin/env php
-<?php
-
-if(!isset($argv[1])) $argv[1] = 'vhost';
-
-$source = __DIR__.'/../etc/'.$argv[1];
-$target = __DIR__.'/../var/vhost';
-
-$ini = parse_ini_file(__DIR__.'/../atomino.ini');
-
-if(!is_dir($target)) mkdir($target);
-foreach (glob($source.'/*') as $file){
-	$file = pathinfo($file, PATHINFO_BASENAME);
-	copy($source.'/'.$file, $target.'/'.$file);
-}
-
-$template = file_get_contents($target.'/vhost.conf');
-$template = str_replace('{{domain}}', $ini['domain'], $template);
-$template = str_replace('{{root}}', realpath(__DIR__.'/..'), $template);
-file_put_contents($target.'/vhost.conf', $template);
-
-echo "\n".'DONE'."\n";
+#!/bin/bash
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/../";
+DOMAIN=`php ./bin/php/env-loader.php ATOMINO_DOMAIN`;
+echo "generating vhost ${DOMAIN}"
+DOMAIN=${DOMAIN} php bin/php/vhost.php

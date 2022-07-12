@@ -1,6 +1,6 @@
 .idea
-atomino.ini
-atomino.env
+etc/atomino.ini
+etc/.env
 vendor
 node_modules
 var/**/*

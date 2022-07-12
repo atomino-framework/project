@@ -12,6 +12,7 @@ use Atomino\Bundle\Debug\CliDebugFormatter;
 use Atomino\Bundle\Debug\DebugLogger;
 use Atomino\Bundle\Debug\ErrorHandler;
 use Atomino\Bundle\Debug\HttpHandler;
+use Atomino\Bundle\Debug\StdOutputHandler;
 use Atomino\Carbon\Database\Connection;
 use Atomino\Core\ApplicationConfig;
 use Atomino\Core\BootLoader;
@@ -26,7 +27,7 @@ use function DI\{decorate, factory};
 
 return [
 	DebugHandlerInterface::class => factory(function (ApplicationConfig $cfg) {
-		$handler = (new HttpHandler($cfg('debug.url').':'.$cfg('debug.port'), $cfg('debug.level')))->setFormatter(new CliDebugFormatter([
+		$handler = (new StdOutputHandler($cfg('debug.level')))->setFormatter(new CliDebugFormatter([
 			DebugHandlerInterface::DEBUG_CHANNEL_USER => new UserChannelFormatter(),
 			Connection::DEBUG_CHANNEL_SQL             => new SqlChannelFormatter(),
 			Connection::DEBUG_CHANNEL_SQL_ERROR       => new SqlErrorChannelFormatter(),
